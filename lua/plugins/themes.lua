@@ -6,6 +6,7 @@ return {
     config = function()
       require('catppuccin').setup {
         flavour = 'mocha',
+        transparent_background = true,
         integrations = {
           noice = true,
           notify = true,
@@ -16,6 +17,9 @@ return {
             enabled = true,
             scope_color = 'lavender',
             colored_indent_levels = true,
+          },
+          telescope = {
+            enabled = true,
           },
         },
       }
