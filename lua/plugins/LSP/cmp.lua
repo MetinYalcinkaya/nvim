@@ -73,6 +73,7 @@ return {
           confirm_resolve_timeout = 80,
           async_budget = 1,
           max_view_entries = 200,
+          filtering_context_budget = 500,
         },
 
         formatting = {
@@ -113,7 +114,7 @@ return {
           },
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
-          -- { name = 'buffer' },
+          { name = 'buffer' },
           -- { name = 'path' },
           { name = 'async_path' },
           { name = 'calc' },
