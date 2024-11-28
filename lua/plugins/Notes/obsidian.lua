@@ -72,7 +72,7 @@ return {
       vim.keymap.set(
         'n',
         '<leader>ok',
-        ":!mv '%:p' /Users/metinyalcinkaya/Documents/Obsidian/Main/uncategorized<CR>:bd<CR>",
+        ":!mv '%:p' ~/Documents/Obsidian/Main/uncategorized<CR>:bd<CR>",
         { desc = 'Move File To Uncategorized', silent = true }
       )
       vim.keymap.set('n', '<leader>odd', ":!rm '%:p'<CR>:bd<CR>", { desc = 'Delete File', silent = true })
