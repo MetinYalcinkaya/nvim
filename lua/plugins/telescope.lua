@@ -18,6 +18,9 @@ return {
     config = function()
       local telescope = require 'telescope'
       telescope.setup {
+        defaults = {
+          file_ignore_patterns = { '.git/', '.obsidian/' },
+        },
         pickers = {
           find_files = {
             hidden = true,

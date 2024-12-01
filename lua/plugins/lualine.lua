@@ -16,7 +16,7 @@ return {
           always_divide_middle = true,
           globalstatus = true,
           refresh = {
-            statusline = 100,
+            statusline = 50,
           },
         },
         sections = {
@@ -70,7 +70,6 @@ return {
             },
           },
           lualine_z = {
-
             {
               'location',
             },
