@@ -1,10 +1,10 @@
 return {
   {
-    'MeanderingProgrammer/render-markdown.nvim',
-    ft = { 'markdown' },
-    dependencies = { 'nvim-treesitter/nvim-treesitter', 'echasnovski/mini.icons' },
+    "MeanderingProgrammer/render-markdown.nvim",
+    ft = { "markdown" },
+    dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.icons" },
     config = function()
-      require('render-markdown').setup {
+      require("render-markdown").setup({
         debounce = 5,
         win_options = {
           conceallevel = {
@@ -16,10 +16,10 @@ return {
             rendered = 2,
           },
         },
-      }
-      vim.keymap.set('n', '<leader>mt', function()
-        require('render-markdown').toggle()
-      end, { desc = 'Toggle Markdown Render' })
+      })
+      vim.keymap.set("n", "<leader>mt", function()
+        require("render-markdown").toggle()
+      end, { desc = "Toggle Markdown Render" })
     end,
   },
   -- {

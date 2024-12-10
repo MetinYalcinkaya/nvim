@@ -1,8 +1,8 @@
 return {
   {
-    'p00f/clangd_extensions.nvim',
+    "p00f/clangd_extensions.nvim",
     lazy = true,
-    ft = { 'c', 'cpp' },
+    ft = { "c", "cpp" },
     opts = {},
   },
 }
