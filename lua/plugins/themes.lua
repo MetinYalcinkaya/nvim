@@ -27,17 +27,18 @@ return {
   --   end,
   -- },
   {
-    'rose-pine/neovim',
-    name = 'rose-pine',
+    "rose-pine/neovim",
+    dir = "~/Developer/neovim/",
+    name = "rose-pine",
     priority = 1000,
     config = function()
-      require('rose-pine').setup {
-        variant = 'main',
+      require("rose-pine").setup({
+        variant = "main",
         styles = {
           transparency = true,
         },
-      }
-      vim.cmd.colorscheme 'rose-pine'
+      })
+      vim.cmd.colorscheme("rose-pine")
     end,
   },
 }
