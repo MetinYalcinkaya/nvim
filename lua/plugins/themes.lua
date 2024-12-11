@@ -28,7 +28,7 @@ return {
   -- },
   {
     "rose-pine/neovim",
-    dir = "~/Developer/rose-pine/neovim/",
+    -- dir = "~/Developer/rose-pine/neovim/",
     name = "rose-pine",
     priority = 1000,
     config = function()

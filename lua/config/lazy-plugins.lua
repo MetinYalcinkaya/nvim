@@ -5,6 +5,7 @@ require("lazy").setup({
   { import = "plugins.Notes" },
 }, {
   ui = {
+    border = border("FloatBorder"),
     icons = vim.g.have_nerd_font and {} or {
       cmd = "⌘",
       config = "🛠",
