@@ -72,8 +72,7 @@ return {
               completion = {
                 callSnippet = "Replace",
               },
-
-              -- diagnostics = { disable = { 'missing-fields' } },
+              diagnostics = { disable = { "missing-fields" } },
             },
           },
         },
@@ -117,7 +116,11 @@ return {
         require("lspconfig")[server].setup(setup)
       end
 
-      require("mason").setup()
+      require("mason").setup({
+        ui = {
+          border = border("FloatBorder"),
+        },
+      })
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
@@ -129,16 +132,16 @@ return {
         "marksman", -- Markdown LSP server (Completion, goto def, references, rename, diag)
         "prettierd", -- Using for markdown formatting specifically
         "ruff", -- Python linter
-        "gopls", -- Golang LSP
-        "rust-analyzer", -- Rust LSP
         "clangd", -- C LSP
         "clang-format", -- C formatter
         "swiftlint", -- Swift linter
-        -- 'clang-tidy', -- C++ Linter
+        "zls", -- Zig language server
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
       require("mason-lspconfig").setup({
+        ensure_installed = {},
+        automatic_installation = true,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}

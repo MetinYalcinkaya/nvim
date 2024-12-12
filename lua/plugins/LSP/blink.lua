@@ -72,7 +72,7 @@ return {
           },
           buffer = {
             fallback_for = { "lsp" },
-            min_keyword_length = 0,
+            min_keyword_length = 4,
           },
           lazydev = {
             name = "LazyDev",

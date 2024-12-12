@@ -19,10 +19,10 @@ vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagn
 vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Rebinds arrowkeys to use hjkl while using Glove80
-vim.api.nvim_set_keymap("n", "<Left>", "h", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Down>", "j", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Up>", "k", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<Right>", "l", { noremap = true, silent = true })
+vim.keymap.set("n", "<Left>", "h", { noremap = true, silent = true })
+vim.keymap.set("n", "<Down>", "j", { noremap = true, silent = true })
+vim.keymap.set("n", "<Up>", "k", { noremap = true, silent = true })
+vim.keymap.set("n", "<Right>", "l", { noremap = true, silent = true })
 
 -- Keybinds to make split navigation easier.
 vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
@@ -30,7 +30,7 @@ vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower win
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
 
-vim.api.nvim_set_keymap("n", "<C-Left>", "<C-h>", { noremap = false, silent = true })
-vim.api.nvim_set_keymap("n", "<C-Down>", "<C-j>", { noremap = false, silent = true })
-vim.api.nvim_set_keymap("n", "<C-Up>", "<C-k>", { noremap = false, silent = true })
-vim.api.nvim_set_keymap("n", "<C-Right>", "<C-l>", { noremap = false, silent = true })
+vim.keymap.set("n", "<C-Left>", "<C-h>", { noremap = false, silent = true })
+vim.keymap.set("n", "<C-Down>", "<C-j>", { noremap = false, silent = true })
+vim.keymap.set("n", "<C-Up>", "<C-k>", { noremap = false, silent = true })
+vim.keymap.set("n", "<C-Right>", "<C-l>", { noremap = false, silent = true })
