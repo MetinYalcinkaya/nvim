@@ -9,7 +9,7 @@ return {
       local lint = require("lint")
 
       lint.linters_by_ft = {
-        python = { "ruff" },
+        -- python = { "ruff" },
         swift = { "swiftlint" },
         -- cpp = { 'clangtidy' },
       }

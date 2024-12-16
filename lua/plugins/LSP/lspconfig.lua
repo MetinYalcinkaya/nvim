@@ -131,17 +131,15 @@ return {
         "isort", -- Import sorter for Python
         "marksman", -- Markdown LSP server (Completion, goto def, references, rename, diag)
         "prettierd", -- Using for markdown formatting specifically
-        "ruff", -- Python linter
         "clangd", -- C LSP
         "clang-format", -- C formatter
         "swiftlint", -- Swift linter
         "zls", -- Zig language server
       })
+
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
       require("mason-lspconfig").setup({
-        ensure_installed = {},
-        automatic_installation = true,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}

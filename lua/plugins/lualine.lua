@@ -52,6 +52,7 @@ return {
             },
           },
           lualine_x = {
+            { "harpoon2", color_active = { fg = "#ff966c" } },
             {
               "diagnostics",
               always_visible = false,

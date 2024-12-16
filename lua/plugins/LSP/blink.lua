@@ -41,11 +41,11 @@ return {
           },
         },
         ghost_text = {
-          enabled = true,
+          enabled = false,
         },
       },
       signature = {
-        enabled = true,
+        enabled = false,
         window = {
           min_width = 1,
           max_width = 100,
