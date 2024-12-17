@@ -65,7 +65,16 @@ return {
       -- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
       local servers = {
-        pyright = {},
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              typeCheckingMode = "standard",
+              disableOrganizeImports = true,
+            },
+          },
+        },
+        ruff = {},
+        marksman = {},
         lua_ls = {
           settings = {
             Lua = {
@@ -127,7 +136,7 @@ return {
         "stylua", -- Used to format Lua code
         "black", -- Python formatter
         "lua-language-server", -- Lua LSP
-        "pyright", -- Static type checker for Python
+        "basedpyright", -- Static type checker for Python
         "isort", -- Import sorter for Python
         "marksman", -- Markdown LSP server (Completion, goto def, references, rename, diag)
         "prettierd", -- Using for markdown formatting specifically
@@ -135,6 +144,7 @@ return {
         "clang-format", -- C formatter
         "swiftlint", -- Swift linter
         "zls", -- Zig language server
+        "ruff", -- Python linter
       })
 
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

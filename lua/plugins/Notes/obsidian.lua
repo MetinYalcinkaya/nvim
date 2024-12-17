@@ -1,5 +1,6 @@
 return {
   {
+    -- TODO: sus out a way to use blink as cmp for functioning links etc
     "epwalsh/obsidian.nvim",
     version = "*",
     lazy = true,

@@ -33,7 +33,9 @@ return {
           { section = "startup" },
         },
       },
-      notifier = { enabled = true },
+      notifier = {
+        style = "minimal",
+      },
       statuscolumn = { enabled = true },
       input = {},
     },

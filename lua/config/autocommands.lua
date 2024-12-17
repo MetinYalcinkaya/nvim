@@ -21,7 +21,7 @@ autocmd("BufEnter", {
 
 -- Spellcheck, wrap, and text width for text filetypes
 autocmd("FileType", {
-  pattern = { "markdown", "gitcommit", "NeogitCommitMessage" },
+  pattern = { "markdown", "gitcommit", "NeogitCommitMessage", "text" },
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
