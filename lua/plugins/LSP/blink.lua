@@ -25,13 +25,13 @@ return {
           min_width = 15,
           max_height = 10,
           draw = {
-            treesitter = true,
+            treesitter = {},
             columns = { { "label", "label_description", gap = 1 }, { "kind", "kind_icon", gap = 1 } },
           },
         },
         documentation = {
           auto_show = true,
-          auto_show_delay_ms = 0,
+          auto_show_delay_ms = 200,
           update_delay_ms = 0,
           window = {
             min_width = 10,
@@ -54,34 +54,34 @@ return {
         },
       },
       sources = {
-        completion = {
-          enabled_providers = {
-            "lsp",
-            "path",
-            "snippets",
-            "buffer",
-            "lazydev",
-          },
+        default = {
+          "lsp",
+          "path",
+          "snippets",
+          "buffer",
+          "lazydev",
         },
         providers = {
           lsp = {
-            fallback_for = { "lazydev" },
             min_keyword_length = 0,
+            fallbacks = { "buffer" },
           },
           path = {
             opts = { get_cwd = vim.uv.cwd },
           },
           snippets = {
-            friendly_snippets = true,
+            opts = {
+              friendly_snippets = true,
+            },
             min_keyword_length = 0,
             score_offset = -3,
           },
           buffer = {
-            fallback_for = { "lsp" },
             min_keyword_length = 4,
           },
           lazydev = {
             name = "LazyDev",
+            fallbacks = { "lsp" },
             module = "lazydev.integrations.blink",
           },
         },
@@ -105,13 +105,13 @@ return {
         },
         ["<S-Tab>"] = { "snippet_backward", "fallback" },
       },
-      windows = {
-        autocomplete = {
-          border = border("FloatBorder"),
-          min_width = 10,
-          max_height = 10,
-        },
-      },
+      -- windows = {
+      --   autocomplete = {
+      --     border = border("FloatBorder"),
+      --     min_width = 10,
+      --     max_height = 10,
+      --   },
+      -- },
       appearance = {
         use_nvim_cmp_as_default = false,
         nerd_font_variant = "mono",
