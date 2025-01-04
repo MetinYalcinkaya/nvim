@@ -7,7 +7,7 @@ return {
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       -- { 'j-hui/fidget.nvim', opts = { notification = { override_vim_notify = true } } },
-      { "j-hui/fidget.nvim" },
+      -- { "j-hui/fidget.nvim" },
     },
     config = function()
       vim.api.nvim_create_autocmd("LspAttach", {
@@ -65,15 +65,37 @@ return {
       -- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
       local servers = {
-        basedpyright = {
+        pylsp = {
           settings = {
-            basedpyright = {
-              typeCheckingMode = "standard",
-              disableOrganizeImports = true,
+            pylsp = {
+              plugins = {
+                pyflakes = { enabled = false },
+                pycodestyle = { enabled = false },
+                autopep8 = { enabled = false },
+                yapf = { enabled = false },
+                mccabe = { enabled = false },
+                pylsp_mypy = { enabled = false },
+                pylsp_black = { enabled = false },
+                pylsp_isort = { enabled = false },
+              },
             },
           },
         },
-        ruff = {},
+        -- basedpyright = {
+        --   settings = {
+        --     basedpyright = {
+        --       typeCheckingMode = "standard",
+        --       disableOrganizeImports = true,
+        --     },
+        --   },
+        -- },
+        ruff = {
+          on_attach = function(client)
+            client.server_capabilities.documentFormattingProvider = false
+            client.server_capabilities.hoverProvider = false
+            client.server_capabilities.renameProvider = false
+          end,
+        },
         marksman = {},
         lua_ls = {
           settings = {
@@ -134,22 +156,25 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         "stylua", -- Used to format Lua code
-        "black", -- Python formatter
-        "lua-language-server", -- Lua LSP
-        "basedpyright", -- Static type checker for Python
-        "isort", -- Import sorter for Python
-        "marksman", -- Markdown LSP server (Completion, goto def, references, rename, diag)
+        -- "black", -- Python formatter
+        -- "lua-language-server", -- Lua LSP
+        -- "basedpyright", -- Static type checker for Python
+        -- "isort", -- Import sorter for Python
+        -- "marksman", -- Markdown LSP server (Completion, goto def, references, rename, diag)
         "prettierd", -- Using for markdown formatting specifically
-        "clangd", -- C LSP
+        -- "clangd", -- C LSP
         "clang-format", -- C formatter
         "swiftlint", -- Swift linter
-        "zls", -- Zig language server
+        -- "zls", -- Zig language server
         "ruff", -- Python linter
+        -- "pylsp", -- python lsp
       })
 
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
       require("mason-lspconfig").setup({
+        ensure_installed = vim.tbl_keys(servers),
+        automatic_installation = true,
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
