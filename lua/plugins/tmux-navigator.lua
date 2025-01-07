@@ -1,7 +1,6 @@
 return {
   {
     "alexghergh/nvim-tmux-navigation",
-    event = "BufReadPre",
     config = function()
       if os.getenv("TMUX") then
         local tmn = require("nvim-tmux-navigation")
