@@ -88,6 +88,9 @@ vim.opt.smoothscroll = false
 -- Conceal level
 vim.o.conceallevel = 2
 
+-- Diagnostics disable
+vim.diagnostic.config({ virtual_text = false })
+
 -- Borders
 _G.border = function(hl_name)
   return {
