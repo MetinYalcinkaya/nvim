@@ -4,7 +4,7 @@ return {
     event = "VeryLazy",
     opts = {
       preset = "modern",
-      delay = 100,
+      delay = 0,
       icons = {
         keys = {
           BS = "󰭜 ", -- Better backspace icon + fix space issue I had

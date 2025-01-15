@@ -3,7 +3,7 @@ return {
     "saghen/blink.cmp",
     event = { "InsertEnter", "CmdlineEnter" },
     version = "v0.*",
-    dependencies = "rafamadriz/friendly-snippets",
+    dependencies = { "rafamadriz/friendly-snippets", "mikavilpas/blink-ripgrep.nvim" },
     opts = {
       snippets = {
         expand = function(snippet)
@@ -60,6 +60,7 @@ return {
           "snippets",
           "buffer",
           "lazydev",
+          "ripgrep",
         },
         providers = {
           lsp = {
@@ -83,6 +84,10 @@ return {
             name = "LazyDev",
             fallbacks = { "lsp" },
             module = "lazydev.integrations.blink",
+          },
+          ripgrep = {
+            module = "blink-ripgrep",
+            name = "Ripgrep",
           },
         },
       },

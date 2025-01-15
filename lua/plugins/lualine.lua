@@ -1,6 +1,7 @@
 return {
   {
     "nvim-lualine/lualine.nvim",
+    event = "VeryLazy",
     config = function()
       require("lualine").setup({
         options = {
@@ -20,8 +21,8 @@ return {
           },
         },
         sections = {
-          lualine_a = {
-            { "mode", icon = "" },
+          lualine_a = { { "mode", icon = "" } },
+          lualine_b = {
             {
               function() -- Macro recording
                 local rr = vim.fn.reg_recording()
@@ -32,8 +33,8 @@ return {
                 end
               end,
             },
+            { "branch", icon = "" },
           },
-          lualine_b = { { "branch", icon = "" } },
           lualine_c = {
             { "filetype", icon_only = true, separator = "", padding = { left = 1, right = 0 } },
             {
@@ -65,18 +66,10 @@ return {
             },
             { "diff" },
           },
-          lualine_y = {
-            {
-              "progress",
-            },
-          },
-          lualine_z = {
-            {
-              "location",
-            },
-          },
+          lualine_y = { { "progress" } },
+          lualine_z = { { "location" } },
         },
-        -- extensions = { 'oil', 'mason', 'trouble' },
+        extensions = { "oil", "mason", "trouble", "lazy" },
       })
     end,
   },
