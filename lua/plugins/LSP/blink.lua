@@ -64,30 +64,37 @@ return {
         },
         providers = {
           lsp = {
-            min_keyword_length = 0,
             fallbacks = { "buffer" },
+            score_offset = 10,
           },
           path = {
-            opts = { get_cwd = vim.uv.cwd },
+            score_offset = 2,
+            fallbacks = { "snippets", "buffer" },
+            opts = { get_cwd = vim.uv.cwd, show_hidden_files_by_default = true },
           },
           snippets = {
             opts = {
               friendly_snippets = true,
             },
-            min_keyword_length = 0,
-            score_offset = -3,
+            min_keyword_length = 2,
+            score_offset = 9,
           },
           buffer = {
+            max_items = 3,
             min_keyword_length = 4,
+            score_offset = 1,
           },
           lazydev = {
             name = "LazyDev",
             fallbacks = { "lsp" },
             module = "lazydev.integrations.blink",
+            score_offset = 9,
           },
           ripgrep = {
             module = "blink-ripgrep",
             name = "Ripgrep",
+            min_keyword_length = 2,
+            score_offset = 7,
           },
         },
       },
