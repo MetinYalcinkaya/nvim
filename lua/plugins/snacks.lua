@@ -3,12 +3,16 @@ return {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
-    --@type snacks.Config
     opts = {
       bigfile = { enabled = true },
       dashboard = {
         width = 80,
         preset = {
+          keys = {
+            { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
+            { icon = "󰒲 ", key = "L", desc = "Lazy", action = ":Lazy", enabled = package.loaded.lazy ~= nil },
+            { icon = " ", key = "q", desc = "Quit", action = ":qa" },
+          },
           header = [[
 ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
 ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
@@ -43,7 +47,6 @@ return {
       {
         "<Leader>n",
         function()
-          ---@diagnostic disable-next-line: undefined-global
           Snacks.notifier.show_history()
         end,
         desc = "Notification History",
