@@ -4,8 +4,8 @@ return {
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewToggleFiles", "DiffviewFocusFiles" },
     opts = {},
     keys = {
-      { "<leader>gd", "<CMD>DiffviewOpen<CR>", desc = "DiffView", silent = true },
-      { "<leader>gc", "<CMD>DiffviewClose<CR>", desc = "DiffView Close", silent = true },
+      { "<leader>gds", "<CMD>DiffviewOpen<CR>", desc = "Show", silent = true },
+      { "<leader>gdc", "<CMD>DiffviewClose<CR>", desc = "Close", silent = true },
     },
   },
 }
