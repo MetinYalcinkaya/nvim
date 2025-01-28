@@ -3,7 +3,10 @@ return {
     "neovim/nvim-lspconfig",
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
-      { "williamboman/mason.nvim", config = true },
+      {
+        "williamboman/mason.nvim",
+        opts = { ui = { border = border("FloatBorder") } },
+      },
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       -- { 'j-hui/fidget.nvim', opts = { notification = { override_vim_notify = true } } },
@@ -84,8 +87,13 @@ return {
         -- basedpyright = {
         --   settings = {
         --     basedpyright = {
-        --       typeCheckingMode = "standard",
         --       disableOrganizeImports = true,
+        --       analysis = {
+        --         typeCheckingMode = "standard",
+        --         diagnosticSeverityOverrides = {
+        --           reportUnusedImport = false,
+        --         },
+        --       },
         --     },
         --   },
         -- },
@@ -146,12 +154,6 @@ return {
       for server, setup in pairs(swift_server) do
         require("lspconfig")[server].setup(setup)
       end
-
-      require("mason").setup({
-        ui = {
-          border = border("FloatBorder"),
-        },
-      })
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {

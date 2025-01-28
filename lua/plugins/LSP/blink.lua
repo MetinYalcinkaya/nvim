@@ -17,21 +17,18 @@ return {
         end,
       },
       completion = {
-        list = {
-          cycle = { from_top = false },
-        },
         menu = {
           border = border("FloatBorder"),
           min_width = 15,
           max_height = 10,
           draw = {
-            treesitter = {},
+            treesitter = { "lsp" },
             columns = { { "label", "label_description", gap = 1 }, { "kind", "kind_icon", gap = 1 } },
           },
         },
         documentation = {
           auto_show = true,
-          auto_show_delay_ms = 200,
+          auto_show_delay_ms = 0,
           update_delay_ms = 0,
           window = {
             min_width = 10,
@@ -45,8 +42,9 @@ return {
         },
       },
       signature = {
-        enabled = false,
+        enabled = true,
         window = {
+          show_documentation = false,
           min_width = 1,
           max_width = 100,
           max_height = 10,
@@ -64,7 +62,7 @@ return {
         },
         providers = {
           lsp = {
-            fallbacks = { "buffer" },
+            fallbacks = { "ripgrep" },
             score_offset = 10,
           },
           path = {
@@ -99,23 +97,16 @@ return {
         },
       },
       keymap = {
+        preset = "none",
         ["<C-n>"] = { "select_next", "fallback" },
         ["<C-p>"] = { "select_prev", "fallback" },
-        ["<C-b>"] = { "scroll_documentation_up" },
-        ["<C-f>"] = { "scroll_documentation_down" },
+        ["<Up>"] = { "scroll_documentation_up" },
+        ["<Down>"] = { "scroll_documentation_down" },
         ["<C-y>"] = { "select_and_accept", "fallback" },
-        ["<Tab>"] = {
-          function(cmp)
-            if cmp.snippet_active() then
-              return cmp.accept()
-            else
-              return cmp.select_and_accept()
-            end
-          end,
-          "snippet_forward",
-          "fallback",
-        },
+        ["<Tab>"] = { "snippet_forward", "fallback" },
         ["<S-Tab>"] = { "snippet_backward", "fallback" },
+        ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
+        ["<C-Space>"] = { "show_documentation", "hide_documentation" },
       },
       -- windows = {
       --   autocomplete = {

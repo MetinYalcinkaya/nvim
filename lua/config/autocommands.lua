@@ -43,22 +43,22 @@ autocmd("FocusGained", {
 })
 
 -- Defer friendly-snippets setup to after neovim loads
--- autocmd('VimEnter', {
+-- autocmd("VimEnter", {
 --   callback = function()
 --     vim.defer_fn(function()
---       require('luasnip.loaders.from_vscode').lazy_load()
+--       require("luasnip.loaders.from_vscode").lazy_load()
 --     end, 100)
 --   end,
 -- })
 
--- -- Luasnip unlink snippet
--- autocmd('InsertLeave', {
+-- Luasnip unlink snippet
+-- autocmd("InsertLeave", {
 --   callback = function()
 --     if
---       require('luasnip').session.current_nodes[vim.api.nvim_get_current_buf()]
---       and not require('luasnip').session.jump_active
+--       require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
+--       and not require("luasnip").session.jump_active
 --     then
---       require('luasnip').unlink_current()
+--       require("luasnip").unlink_current()
 --     end
 --   end,
 -- })

@@ -25,16 +25,9 @@ return {
           hex_color = require("mini.hipatterns").gen_highlighter.hex_color(),
         },
       })
-    end,
-  },
-  {
-    "echasnovski/mini.icons",
-    event = "VeryLazy",
-    init = function()
-      package.preload["nvim-web-devicons"] = function()
-        require("mini.icons").mock_nvim_web_devicons()
-        return package.loaded["nvim-web-devicons"]
-      end
+      require("mini.icons").setup()
+      require("mini.icons").mock_nvim_web_devicons()
+      require("mini.icons").tweak_lsp_kind()
     end,
   },
 }
