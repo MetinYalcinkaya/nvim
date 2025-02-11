@@ -68,35 +68,35 @@ return {
       -- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
       local servers = {
-        pylsp = {
-          settings = {
-            pylsp = {
-              plugins = {
-                pyflakes = { enabled = false },
-                pycodestyle = { enabled = false },
-                autopep8 = { enabled = false },
-                yapf = { enabled = false },
-                mccabe = { enabled = false },
-                pylsp_mypy = { enabled = false },
-                pylsp_black = { enabled = false },
-                pylsp_isort = { enabled = false },
-              },
-            },
-          },
-        },
-        -- basedpyright = {
+        -- pylsp = {
         --   settings = {
-        --     basedpyright = {
-        --       disableOrganizeImports = true,
-        --       analysis = {
-        --         typeCheckingMode = "standard",
-        --         diagnosticSeverityOverrides = {
-        --           reportUnusedImport = false,
-        --         },
+        --     pylsp = {
+        --       plugins = {
+        --         pyflakes = { enabled = false },
+        --         pycodestyle = { enabled = false },
+        --         autopep8 = { enabled = false },
+        --         yapf = { enabled = false },
+        --         mccabe = { enabled = false },
+        --         pylsp_mypy = { enabled = false },
+        --         pylsp_black = { enabled = false },
+        --         pylsp_isort = { enabled = false },
         --       },
         --     },
         --   },
         -- },
+        basedpyright = {
+          settings = {
+            basedpyright = {
+              disableOrganizeImports = true,
+              analysis = {
+                typeCheckingMode = "basic",
+                diagnosticSeverityOverrides = {
+                  reportUnusedImport = false,
+                },
+              },
+            },
+          },
+        },
         ruff = {
           on_attach = function(client)
             client.server_capabilities.documentFormattingProvider = false

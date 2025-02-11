@@ -5,6 +5,6 @@ require("lazy").setup({
   { import = "plugins.Notes" },
 }, {
   ui = {
-    border = border("FloatBorder"),
+    border = border("FloatBorder", "rounded"),
   },
 })

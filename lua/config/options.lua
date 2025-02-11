@@ -92,15 +92,72 @@ vim.o.conceallevel = 2
 vim.diagnostic.config({ virtual_text = false })
 
 -- Borders
-_G.border = function(hl_name)
-  return {
-    { "╭", hl_name },
-    { "─", hl_name },
-    { "╮", hl_name },
-    { "│", hl_name },
-    { "╯", hl_name },
-    { "─", hl_name },
-    { "╰", hl_name },
-    { "│", hl_name },
-  }
+local border_styles = {
+  undefined = nil,
+  none = { "", "", "", "", "", "", "", "" },
+  double = { "╔", "═", "╗", "║", "╝", "═", "╚", "║" },
+  single = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+  shadow = {
+    "",
+    "",
+    { " ", "FloatShadowThrough" },
+    { " ", "FloatShadow" },
+    { " ", "FloatShadow" },
+    { " ", "FloatShadow" },
+    { " ", "FloatShadowThrough" },
+    "",
+  },
+  rounded = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  solid = { " ", " ", " ", " ", " ", " ", " ", " " },
+  block = { "▛", "▀", "▜", "▐", "▟", "▄", "▙", "▌" },
+  inner_block = { " ", "▄", " ", "▌", " ", "▀", " ", "▐" },
+  thinblock = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
+  inner_thinblock = { " ", "▁", " ", "▏", " ", "▔", " ", "▕" },
+  bullet = { "•", "•", "•", "•", "•", "•", "•", "•" },
+  star = { "*", "*", "*", "*", "*", "*", "*", "*" },
+  simple = { "+", "-", "+", "|", "+", "-", "+", "|" },
+  heavy_single = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
+  light_shade = { "░", "░", "░", "░", "░", "░", "░", "░" },
+  medium_shade = { "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒" },
+  dark_shade = { "▓", "▓", "▓", "▓", "▓", "▓", "▓", "▓" },
+  arrow = { "↗", "→", "↘", "↓", "↙", "←", "↖", "↑" },
+  full_block = { "█", "█", "█", "█", "█", "█", "█", "█" },
+  diff = {
+    { "┌", "DiffText" },
+    { "─", "DiffText" },
+    { "┐", "DiffText" },
+    { "│", "DiffText" },
+    { "┘", "DiffText" },
+    { "─", "DiffText" },
+    { "└", "DiffText" },
+    { "│", "DiffText" },
+  },
+}
+
+_G.border = function(hl_name, style)
+  style = style or "rounded"
+  local border_def = border_styles[style]
+
+  if not border_def then
+    error("Invalid border style: " .. tostring(style))
+  end
+  local new_border = {}
+  for i, element in ipairs(border_def) do
+    if type(element) == "table" then
+      new_border[i] = { element[1], hl_name or element[2] }
+    else
+      new_border[i] = { element, hl_name }
+    end
+  end
+  return new_border
+  -- return {
+  --   { "╭", hl_name },
+  --   { "─", hl_name },
+  --   { "╮", hl_name },
+  --   { "│", hl_name },
+  --   { "╯", hl_name },
+  --   { "─", hl_name },
+  --   { "╰", hl_name },
+  --   { "│", hl_name },
+  -- }
 end

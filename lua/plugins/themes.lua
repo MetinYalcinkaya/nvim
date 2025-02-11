@@ -26,22 +26,22 @@ return {
   --     vim.cmd.colorscheme 'catppuccin'
   --   end,
   -- },
-  {
-    "folke/tokyonight.nvim",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("tokyonight").setup({
-        style = "moon",
-        styles = {
-          floats = "transparent",
-        },
-        transparent = true,
-        lualine_bold = true,
-      })
-      vim.cmd.colorscheme("tokyonight")
-    end,
-  },
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require("tokyonight").setup({
+  --       style = "moon",
+  --       styles = {
+  --         -- floats = "transparent",
+  --       },
+  --       transparent = false,
+  --       lualine_bold = true,
+  --     })
+  --     vim.cmd.colorscheme("tokyonight")
+  --   end,
+  -- },
   -- {
   --   "rose-pine/neovim",
   --   dir = "~/Developer/rose-pine/neovim/",
@@ -57,4 +57,30 @@ return {
   --     vim.cmd.colorscheme("rose-pine")
   --   end,
   -- },
+  {
+    "olimorris/onedarkpro.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("onedarkpro").setup({
+        highlights = {
+          NormalFloat = { bg = "NONE" },
+          FloatBorder = { fg = "${gray}", bg = "${bg}" },
+        },
+        styles = {
+          comments = "italic",
+          methods = "bold",
+          functions = "bold",
+          keywords = "italic",
+          parameters = "italic",
+          conditionals = "italic",
+          virtual_text = "italic",
+        },
+        options = {
+          cursorline = true,
+        },
+      })
+      vim.cmd.colorscheme("onedark")
+    end,
+  },
 }

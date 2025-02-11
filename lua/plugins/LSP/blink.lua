@@ -42,7 +42,7 @@ return {
         },
       },
       signature = {
-        enabled = true,
+        enabled = false,
         window = {
           show_documentation = false,
           min_width = 1,
@@ -106,7 +106,7 @@ return {
         ["<Tab>"] = { "snippet_forward", "fallback" },
         ["<S-Tab>"] = { "snippet_backward", "fallback" },
         ["<C-k>"] = { "show_signature", "hide_signature", "fallback" },
-        ["<C-Space>"] = { "show_documentation", "hide_documentation" },
+        ["<C-Space>"] = { "show", "show_documentation", "hide_documentation" },
       },
       -- windows = {
       --   autocomplete = {
