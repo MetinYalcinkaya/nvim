@@ -5,7 +5,7 @@ return {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
     },
-    event = "VeryLazy",
+    cmd = "CodeCompanionChat",
     config = function()
       require("codecompanion").setup({
         strategies = {

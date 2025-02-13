@@ -3,7 +3,7 @@ return {
     "folke/which-key.nvim",
     event = "VeryLazy",
     opts = {
-      preset = "modern",
+      preset = "helix",
       delay = 0,
       icons = {
         keys = {
@@ -14,34 +14,36 @@ return {
     config = function(_, opts)
       local wk = require("which-key")
       wk.add({
-        { "<leader>c", group = "[C]ode", icon = { icon = "", color = "orange" }, mode = { "n", "x" } },
-        { "<leader>d", group = "[D]ocument", icon = { icon = "󰈔", color = "cyan" } },
-        { "<leader>r", group = "[R]ename", icon = "󰘎" },
-        { "<leader>s", group = "[S]earch", icon = { icon = "", color = "green" } },
-        { "<leader>t", group = "[T]oggle", icon = { icon = "", color = "yellow" } },
-        { "<leader>w", group = "[W]orkspace", icon = "" },
+        { "<Leader>c", group = "[C]ode", icon = { icon = "", color = "orange" }, mode = { "n", "x" } },
+        { "<Leader>d", group = "[D]ocument", icon = { icon = "󰈔", color = "cyan" } },
+        { "<Leader>r", group = "[R]ename", icon = { icon = "󰘎", color = "cyan" } },
+        { "<Leader>s", group = "[S]earch", icon = { icon = "", color = "green" } },
+        { "<Leader>t", group = "[T]oggle", icon = { icon = "", color = "yellow" } },
         -- Obsidian/Markdown
-        { "<leader>o", group = "[O]bsidian", icon = { icon = "", color = "purple" } },
-        { "<leader>m", group = "[M]arkdown", icon = "" },
+        { "<Leader>o", group = "[O]bsidian", icon = { icon = "", color = "purple" } },
+        { "<Leader>m", group = "[M]arkdown", icon = { icon = "", color = "purple" } },
         -- Oil.nvim icon
-        { "<leader>-", group = "Oil Overlay", icon = { icon = "󰏇", color = "red" } },
-        -- Surround
-        { "s", group = "+ surround", icon = { icon = "󰅪", color = "cyan" } },
+        { "_", group = "Oil Overlay", icon = { icon = "󰏇", color = "red" } },
         -- Trouble
-        { "<leader>x", group = "Diagnostics", icon = { icon = "󰔫", color = "cyan" } },
+        { "<Leader>x", group = "Diagnostics", icon = { icon = "󰔫", color = "cyan" } },
         -- Git
-        { "<leader>g", group = "[G]it", icon = { name = "git", cat = "filetype" } },
-        { "<leader>g", desc = "[G]it", mode = "v" },
-        { "<leader>gh", desc = "[H]unk", icon = { name = "git", cat = "filetype" } },
-        { "<leader>gt", desc = "[T]oggle", icon = { name = "git", cat = "filetype" } },
-        { "<leader>gd", desc = "[D]iffview", icon = { name = "git", cat = "filetype" } },
+        { "<Leader>g", group = "[G]it", icon = { name = "git", cat = "filetype" } },
+        { "<Leader>g", desc = "[G]it", mode = "v" },
+        { "<Leader>gh", desc = "[H]unk", icon = { name = "git", cat = "filetype" } },
+        { "<Leader>gt", desc = "[T]oggle", icon = { name = "git", cat = "filetype" } },
+        { "<Leader>gv", desc = "Diff[v]iew", icon = { name = "git", cat = "filetype" } },
         -- Harpoon
-        { "<leader>h", group = "[H]arpoon", icon = "󰀱" },
-        { "<Leader>1", group = "Harpoon 1", icon = "󰀱" },
-        { "<Leader>2", group = "Harpoon 2", icon = "󰀱" },
-        { "<Leader>3", group = "Harpoon 3", icon = "󰀱" },
-        { "<Leader>4", group = "Harpoon 4", icon = "󰀱" },
-        { "<Leader>5", group = "Harpoon 5", icon = "󰀱" },
+        { "<Leader>h", group = "[H]arpoon", icon = { icon = "󰀱", color = "grey" } },
+        { "<Leader>1", group = "Harpoon 1", icon = { icon = "󰀱", color = "grey" } },
+        { "<Leader>2", group = "Harpoon 2", icon = { icon = "󰀱", color = "grey" } },
+        { "<Leader>3", group = "Harpoon 3", icon = { icon = "󰀱", color = "grey" } },
+        { "<Leader>4", group = "Harpoon 4", icon = { icon = "󰀱", color = "grey" } },
+        { "<Leader>5", group = "Harpoon 5", icon = { icon = "󰀱", color = "grey" } },
+        -- Find Files
+        { "<Leader>f", desc = "[F]ind", icon = { icon = "", color = "cyan" } },
+        -- Snacks
+        { "<Leader>u", desc = "Misc", icon = { icon = "", color = "grey" } },
+        -- Hidden keymaps
         wk.setup(opts),
       })
     end,

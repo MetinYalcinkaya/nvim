@@ -34,3 +34,9 @@ vim.keymap.set("n", "<C-Left>", "<C-h>", { noremap = false, silent = true })
 vim.keymap.set("n", "<C-Down>", "<C-j>", { noremap = false, silent = true })
 vim.keymap.set("n", "<C-Up>", "<C-k>", { noremap = false, silent = true })
 vim.keymap.set("n", "<C-Right>", "<C-l>", { noremap = false, silent = true })
+
+-- Remove
+vim.keymap.del("n", "gra")
+vim.keymap.del("n", "gri")
+vim.keymap.del("n", "grn")
+vim.keymap.del("n", "grr")

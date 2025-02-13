@@ -23,7 +23,7 @@ return {
       })
       vim.keymap.set("n", "<leader>l", function()
         lint.try_lint()
-      end, { desc = "[L]int buffer" })
+      end, { desc = "Lint buffer" })
     end,
   },
 }

@@ -20,16 +20,16 @@ return {
             mode = mode or "n"
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
           end
-          map("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-          map("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-          map("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-          map("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-          map("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-          map("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+          map("gd", Snacks.picker.lsp_definitions, "Goto [D]efinition")
+          map("gD", Snacks.picker.lsp_declarations, "Goto [D]eclaration")
+          map("gr", Snacks.picker.lsp_references, "Goto [R]eferences")
+          map("gI", Snacks.picker.lsp_implementations, "Goto [I]mplementation")
+          map("gy", Snacks.picker.lsp_type_definitions, "Goto T[y]pe Definition")
+          map("<Leader>ss", Snacks.picker.lsp_symbols, "LSP Symbols")
+          map("<leader>sS", Snacks.picker.lsp_workspace_symbols, "LSP Workspace Symbols")
           map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
           map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
           map("K", vim.lsp.buf.hover, "Hover Documentation")
-          map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.server_capabilities.documentHighlightProvider then

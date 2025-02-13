@@ -3,7 +3,7 @@ return {
     -- TODO: sus out a way to use blink as cmp for functioning links etc
     "epwalsh/obsidian.nvim",
     version = "*",
-    lazy = true,
+    event = "VeryLazy",
     ft = "markdown",
     cond = function()
       local cwd = vim.fn.getcwd()
@@ -101,8 +101,8 @@ return {
       local uncategorized_dir = "~/Documents/Obsidian/Main/uncategorized"
 
       vim.keymap.set("n", "<leader>sg", function()
-        require("telescope.builtin").live_grep({ search_dirs = { inbox_dir, notes_dir, uncategorized_dir } })
-      end, { desc = "[S]earch by [G]rep (Obsidian)" })
+        Snacks.picker.grep({ dirs = { inbox_dir, notes_dir, uncategorized_dir } })
+      end, { desc = "[S]earch by [G]rep (Obsidian)", noremap = true })
     end,
   },
 }
