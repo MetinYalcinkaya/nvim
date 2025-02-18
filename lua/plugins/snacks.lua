@@ -38,9 +38,15 @@ return {
         },
       },
       notifier = {
-        style = "minimal",
+        style = "compact",
       },
-      statuscolumn = { enabled = true },
+      statuscolumn = {},
+      indent = {},
+      image = {
+        markdown = {
+          enabled = true,
+        },
+      },
       input = {},
       picker = {
         matcher = {

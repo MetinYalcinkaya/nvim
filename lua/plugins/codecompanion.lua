@@ -17,7 +17,23 @@ return {
           anthropic = function()
             return require("codecompanion.adapters").extend("anthropic", {
               env = {
-                api_key = "cmd:op read op://API/anthropic/credential --no-newline",
+                api_key = "cmd:op read op://API/anthropic/api_key --no-newline",
+              },
+            })
+          end,
+
+          deepseek = function()
+            return require("codecompanion.adapters").extend("deepseek", {
+              env = {
+                api_key = "cmd:op read op://API/deepseek/api_key --no-newline",
+              },
+            })
+          end,
+
+          openai = function()
+            return require("codecompanion.adapters").extend("openai", {
+              env = {
+                api_key = "cmd:op read op://API/openai/api_key --no-newline",
               },
             })
           end,

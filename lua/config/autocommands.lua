@@ -42,14 +42,22 @@ autocmd("FocusGained", {
   desc = "Reload file if changed",
 })
 
--- Defer friendly-snippets setup to after neovim loads
--- autocmd("VimEnter", {
---   callback = function()
---     vim.defer_fn(function()
---       require("luasnip.loaders.from_vscode").lazy_load()
---     end, 100)
---   end,
--- })
+-- Defer friendly-snippets loading and filetype_extend
+autocmd("VimEnter", {
+  callback = function()
+    vim.defer_fn(function()
+      -- Extending filetypes
+      require("luasnip").filetype_extend("python", { "pydoc" })
+      require("luasnip").filetype_extend("lua", { "luadoc" })
+      -- Loading
+      require("luasnip.loaders.from_vscode").lazy_load({
+        paths = {
+          vim.fn.stdpath("data") .. "/lazy/friendly-snippets",
+        },
+      })
+    end, 100)
+  end,
+})
 
 -- Luasnip unlink snippet
 -- autocmd("InsertLeave", {

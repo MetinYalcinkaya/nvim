@@ -25,7 +25,7 @@ return {
   },
   {
     "lewis6991/ts-install.nvim",
-    event = "VimEnter",
+    event = "VeryLazy",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     run = ":TS update",
     config = function()

@@ -2,19 +2,45 @@ return {
   {
     "saghen/blink.cmp",
     event = { "InsertEnter", "CmdlineEnter" },
-    version = "v0.*",
-    dependencies = { "rafamadriz/friendly-snippets", "mikavilpas/blink-ripgrep.nvim" },
+    -- version = "v0.*",
+    build = "cargo build --release",
+    dependencies = {
+      {
+        "L3MON4D3/LuaSnip",
+        version = "v2.*",
+        build = "make install_jsregexp",
+        dependencies = "rafamadriz/friendly-snippets",
+        config = function()
+          local ls = require("luasnip")
+          ls.filetype_extend("python", { "pydoc" })
+        end,
+      },
+      "mikavilpas/blink-ripgrep.nvim",
+    },
     opts = {
       snippets = {
-        expand = function(snippet)
-          vim.snippet.expand(snippet)
-        end,
-        active = function(filter)
-          return vim.snippet.active(filter)
-        end,
-        jump = function(direction)
-          vim.snippet.jump(direction)
-        end,
+        preset = "luasnip",
+        -- expand = function(snippet)
+        --   vim.snippet.expand(snippet)
+        -- end,
+        -- active = function(filter)
+        --   return vim.snippet.active(filter)
+        -- end,
+        -- jump = function(direction)
+        --   vim.snippet.jump(direction)
+        -- end,
+        -- expand = function(snippet)
+        --   require("luasnip").lsp_expand(snippet)
+        -- end,
+        -- active = function(filter)
+        --   if filter and filter.direction then
+        --     return require("luasnip").jumpable(filter.direction)
+        --   end
+        --   return require("luasnip").in_snippet()
+        -- end,
+        -- jump = function(direction)
+        --   require("luasnip").jump(direction)
+        -- end,
       },
       completion = {
         menu = {
@@ -28,7 +54,7 @@ return {
         },
         documentation = {
           auto_show = true,
-          auto_show_delay_ms = 0,
+          -- auto_show_delay_ms = 10,
           update_delay_ms = 0,
           window = {
             min_width = 10,
@@ -71,10 +97,8 @@ return {
             opts = { get_cwd = vim.uv.cwd, show_hidden_files_by_default = true },
           },
           snippets = {
-            opts = {
-              friendly_snippets = true,
-            },
-            min_keyword_length = 2,
+            -- FIX: docstrings ain't workin'
+            min_keyword_length = 1,
             score_offset = 9,
           },
           buffer = {
