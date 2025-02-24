@@ -145,15 +145,15 @@ return {
       -- but it was the only way to get it done it seems, as
       -- mason-lspconfig doesn't like it when you put
       -- sourcekit through it since it's not officially supported
-      local swift_server = {
-        sourcekit = {
-          root_dir = require("lspconfig").util.root_pattern(".git", "buildServer.json"),
-        },
-      }
-
-      for server, setup in pairs(swift_server) do
-        require("lspconfig")[server].setup(setup)
-      end
+      -- local swift_server = {
+      --   sourcekit = {
+      --     root_dir = require("lspconfig").util.root_pattern(".git", "buildServer.json"),
+      --   },
+      -- }
+      --
+      -- for server, setup in pairs(swift_server) do
+      --   require("lspconfig")[server].setup(setup)
+      -- end
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
@@ -164,8 +164,8 @@ return {
         -- "isort", -- Import sorter for Python
         -- "marksman", -- Markdown LSP server (Completion, goto def, references, rename, diag)
         "prettierd", -- Using for markdown formatting specifically
-        -- "clangd", -- C LSP
-        "clang-format", -- C formatter
+        "clangd", -- C LSP
+        -- "clang-format", -- C formatter
         "swiftlint", -- Swift linter
         -- "zls", -- Zig language server
         "ruff", -- Python linter

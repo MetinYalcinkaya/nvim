@@ -16,7 +16,7 @@ return {
     opts = {
       notify_on_error = true,
       format_on_save = function(bufnr)
-        local disable_filetypes = { c = true, cpp = true }
+        local disable_filetypes = { c = false, cpp = true }
         local lsp_format_opt
         if disable_filetypes[vim.bo[bufnr].filetype] then
           lsp_format_opt = "never"
@@ -34,7 +34,7 @@ return {
         markdown = { "prettierd" },
         go = { "gofmt" },
         rust = { "rustfmt" },
-        c = { "clangd" },
+        c = { "clang-format" },
         cpp = { "clangd" },
         swift = { "swiftformat" },
       },

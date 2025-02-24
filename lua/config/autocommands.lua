@@ -23,9 +23,9 @@ autocmd("BufEnter", {
 autocmd("FileType", {
   pattern = { "markdown", "gitcommit", "NeogitCommitMessage", "text" },
   callback = function()
-    vim.opt_local.wrap = true
-    vim.opt_local.spell = true
-    vim.opt_local.textwidth = 80
+    vim.opt.wrap = true
+    vim.opt.spell = true
+    vim.opt.textwidth = 80
   end,
   group = augroup("spellcheck-for-md", { clear = true }),
   desc = "Spellcheck for Markdown files",
@@ -70,6 +70,16 @@ autocmd("VimEnter", {
 --     end
 --   end,
 -- })
+
+-- Snacks disable in ft
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "Disable indent for markdown",
+  pattern = { "markdown" },
+  group = vim.api.nvim_create_augroup("snacks_group", { clear = false }),
+  callback = function()
+    vim.b.snacks_indent = false
+  end,
+})
 
 -- Snacks LSP Progress
 ---@type table<number, {token:lsp.ProgressToken, msg:string, done:boolean}[]>
