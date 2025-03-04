@@ -42,6 +42,18 @@ return {
         --   require("luasnip").jump(direction)
         -- end,
       },
+      cmdline = {
+        completion = {
+          ghost_text = {
+            enabled = false,
+          },
+          menu = {
+            auto_show = function(ctx)
+              return vim.fn.getcmdtype() == ":"
+            end,
+          },
+        },
+      },
       completion = {
         menu = {
           border = border("FloatBorder"),

@@ -89,7 +89,7 @@ vim.opt.smoothscroll = false
 vim.o.conceallevel = 2
 
 -- Diagnostics disable
-vim.diagnostic.config({ virtual_text = false })
+-- vim.diagnostic.config({ virtual_text = false })
 
 -- Borders
 local border_styles = {
