@@ -80,7 +80,8 @@ vim.opt.breakindent = true
 vim.g.markdown_recommended_style = 0
 
 -- Spell language
-vim.opt.spelllang = "en_us"
+-- vim.opt.spelllang = { "en_us", "en_au" }
+vim.opt.spelllang = "en"
 
 -- Experimental smooth scrolling
 vim.opt.smoothscroll = false

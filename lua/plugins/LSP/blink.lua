@@ -66,8 +66,8 @@ return {
         },
         documentation = {
           auto_show = true,
-          -- auto_show_delay_ms = 10,
-          update_delay_ms = 0,
+          auto_show_delay_ms = 50,
+          update_delay_ms = 50,
           window = {
             min_width = 10,
             max_width = 60,

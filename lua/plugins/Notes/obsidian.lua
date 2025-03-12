@@ -1,10 +1,11 @@
 return {
   {
     -- TODO: sus out a way to use blink as cmp for functioning links etc
-    "epwalsh/obsidian.nvim",
+    "obsidian-nvim/obsidian.nvim",
+    -- dir = "~/Developer/obsidian.nvim",
     version = "*",
-    event = "VeryLazy",
-    ft = "markdown",
+    -- event = "VeryLazy",
+    -- ft = "markdown",
     cond = function()
       local cwd = vim.fn.getcwd()
       local home = vim.fn.expand("~")
@@ -18,14 +19,14 @@ return {
       workspaces = {
         {
           name = "Main",
-          path = "~/Documents/Obsidian/Main/",
+          path = vim.fn.expand("~") .. "/Documents/Obsidian/Main",
         },
       },
       notes_subdir = "inbox",
       new_notes_location = "notes_subdir",
 
       completion = {
-        nvim_cmp = false,
+        blink = true,
         min_chars = 0,
       },
       mappings = {
@@ -79,21 +80,22 @@ return {
       vim.keymap.set("n", "<leader>odd", ":!rm '%:p'<CR>:bd<CR>", { desc = "Delete File", silent = true })
 
       -- Inserts template and formats first title by removing date and file name chars
-      vim.keymap.set("n", "<leader>ot", function()
-        vim.cmd("ObsidianTemplate note")
-        local LINE_NUM = 13
-        local line = vim.fn.getline(LINE_NUM)
-        local title = line:match("# (.*)")
-
-        if title then
-          title = title:gsub("_%d%d%d%d%-%d%d%-%d%d$", "")
-          title = title:gsub("[_%-]", " ")
-          title = title:gsub("%s+$", "")
-          vim.fn.setline(LINE_NUM, "# " .. title)
-        end
-
-        vim.cmd("noh")
-      end, { desc = "Insert Template" })
+      -- Now done via zsh script on
+      -- vim.keymap.set("n", "<leader>ot", function()
+      --   vim.cmd("ObsidianTemplate note")
+      --   local LINE_NUM = 13
+      --   local line = vim.fn.getline(LINE_NUM)
+      --   local title = line:match("# (.*)")
+      --
+      --   if title then
+      --     title = title:gsub("_%d%d%d%d%-%d%d%-%d%d$", "")
+      --     title = title:gsub("[_%-]", " ")
+      --     title = title:gsub("%s+$", "")
+      --     vim.fn.setline(LINE_NUM, "# " .. title)
+      --   end
+      --
+      --   vim.cmd("noh")
+      -- end, { desc = "Insert Template" })
 
       -- Obsidian specific live grep folders
       local inbox_dir = "~/Documents/Obsidian/Main/inbox"

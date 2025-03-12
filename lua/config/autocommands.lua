@@ -73,7 +73,7 @@ autocmd("VimEnter", {
 
 -- Snacks disable in ft
 vim.api.nvim_create_autocmd("FileType", {
-  desc = "Disable indent for markdown",
+  desc = "Disable snacks.indent for filetype",
   pattern = { "markdown" },
   group = vim.api.nvim_create_augroup("snacks_group", { clear = false }),
   callback = function()
