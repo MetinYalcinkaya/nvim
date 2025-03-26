@@ -64,6 +64,9 @@ vim.opt.scrolloff = 10
 -- Set true term colors
 vim.opt.termguicolors = true
 
+-- Disable builtin completion
+vim.opt.complete = ""
+
 -- Color column
 -- vim.opt.colorcolumn = '80'
 
