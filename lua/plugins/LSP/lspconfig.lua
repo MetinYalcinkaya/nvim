@@ -139,6 +139,7 @@ return {
             "cpp",
           },
         },
+        superhtml = {},
       }
 
       -- TODO: Find a more graceful way to do this, it's ugly af

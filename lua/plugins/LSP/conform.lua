@@ -33,7 +33,7 @@ return {
         cpp = { "clangd" },
         css = { "prettierd" },
         go = { "gofmt" },
-        html = { "prettierd" },
+        html = { "superhtml" },
         lua = { "stylua" },
         markdown = { "prettierd" },
         python = { "ruff_fix", "ruff_organize_imports", "ruff_format" },
