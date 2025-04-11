@@ -14,9 +14,9 @@ return {
     config = function(_, opts)
       local wk = require("which-key")
       wk.add({
-        { "<Leader>c", group = "[C]ode", icon = { icon = "", color = "orange" }, mode = { "n", "x" } },
-        { "<Leader>d", group = "[D]ocument", icon = { icon = "󰈔", color = "cyan" } },
-        { "<Leader>r", group = "[R]ename", icon = { icon = "󰘎", color = "cyan" } },
+        -- { "<Leader>c", group = "[C]ode", icon = { icon = "", color = "orange" }, mode = { "n", "x" } },
+        -- { "<Leader>d", group = "[D]ocument", icon = { icon = "󰈔", color = "cyan" } },
+        -- { "<Leader>r", group = "[R]ename", icon = { icon = "󰘎", color = "cyan" } },
         { "<Leader>s", group = "[S]earch", icon = { icon = "", color = "green" } },
         { "<Leader>t", group = "[T]oggle", icon = { icon = "", color = "yellow" } },
         -- Obsidian/Markdown

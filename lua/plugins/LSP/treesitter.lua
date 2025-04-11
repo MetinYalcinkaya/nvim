@@ -31,6 +31,14 @@ return {
     config = function()
       require("ts-install").setup({
         auto_install = true,
+        ensure_install = {
+          "lua",
+          "regex",
+          "vim",
+          "bash",
+          "markdown",
+          "markdown_inline",
+        },
       })
     end,
   },

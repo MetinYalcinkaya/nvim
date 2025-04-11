@@ -67,6 +67,9 @@ vim.opt.termguicolors = true
 -- Disable builtin completion
 vim.opt.complete = ""
 
+-- Confirm popup for operations
+vim.opt.confirm = true
+
 -- Color column
 -- vim.opt.colorcolumn = '80'
 

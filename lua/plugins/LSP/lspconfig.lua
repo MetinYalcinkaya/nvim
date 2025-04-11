@@ -9,6 +9,7 @@ return {
       },
       "williamboman/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
+      "saghen/blink.cmp",
       -- { 'j-hui/fidget.nvim', opts = { notification = { override_vim_notify = true } } },
       -- { "j-hui/fidget.nvim" },
     },
@@ -20,16 +21,15 @@ return {
             mode = mode or "n"
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
           end
-          map("gd", Snacks.picker.lsp_definitions, "Goto [D]efinition")
-          map("gD", Snacks.picker.lsp_declarations, "Goto [D]eclaration")
-          map("gr", Snacks.picker.lsp_references, "Goto [R]eferences")
-          map("gI", Snacks.picker.lsp_implementations, "Goto [I]mplementation")
-          map("gy", Snacks.picker.lsp_type_definitions, "Goto T[y]pe Definition")
-          map("<Leader>ss", Snacks.picker.lsp_symbols, "LSP Symbols")
-          map("<leader>sS", Snacks.picker.lsp_workspace_symbols, "LSP Workspace Symbols")
-          map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-          map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
-          map("K", vim.lsp.buf.hover, "Hover Documentation")
+          map("grn", vim.lsp.buf.rename, "[R]e[n]ame")
+          map("gra", vim.lsp.buf.code_action, "[G]oto Code [A]ction", { "n", "x" })
+          map("grr", Snacks.picker.lsp_references, "[G]oto [R]eferences")
+          map("gri", Snacks.picker.lsp_implementations, "[G]oto [I]mplementation")
+          map("grd", Snacks.picker.lsp_definitions, "[G]oto [D]efinition")
+          map("grD", Snacks.picker.lsp_declarations, "[G]oto [D]eclaration")
+          map("gO", Snacks.picker.lsp_symbols, "Open Document Symbols")
+          map("gW", Snacks.picker.lsp_workspace_symbols, "Open Workspace Symbols")
+          map("grt", Snacks.picker.lsp_type_definitions, "[G]oto [T]ype Definition")
 
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client.server_capabilities.documentHighlightProvider then
@@ -63,9 +63,7 @@ return {
         end,
       })
 
-      local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = require("blink.cmp").get_lsp_capabilities(capabilities) -- for blink
-      -- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+      local capabilities = require("blink.cmp").get_lsp_capabilities()
 
       local servers = {
         -- pylsp = {
