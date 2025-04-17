@@ -59,6 +59,7 @@ return {
   -- },
   {
     "olimorris/onedarkpro.nvim",
+    -- dir = "~/Developer/onedarkpro.nvim/",
     lazy = false,
     priority = 1000,
     config = function()

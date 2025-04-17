@@ -41,7 +41,19 @@ return {
         style = "compact",
       },
       statuscolumn = {},
-      indent = {},
+      indent = {
+        scope = {
+          hl = {
+            "SnacksIndentScope1",
+            "SnacksIndentScope2",
+            "SnacksIndentScope3",
+            "SnacksIndentScope4",
+            "SnacksIndentScope5",
+            "SnacksIndentScope6",
+            "SnacksIndentScope7",
+          },
+        },
+      },
       image = {
         markdown = {
           enabled = true,
