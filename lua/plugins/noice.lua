@@ -3,6 +3,13 @@ return {
     "folke/noice.nvim",
     event = "VeryLazy",
     opts = {
+      views = {
+        cmdline_popup = {
+          size = {
+            width = 50,
+          },
+        },
+      },
       lsp = {
         progress = {
           enabled = false,

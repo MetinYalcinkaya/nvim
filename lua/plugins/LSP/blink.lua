@@ -152,7 +152,7 @@ return {
       --   },
       -- },
       fuzzy = {
-        implementation = "prefer_rust_with_warning",
+        implementation = "rust",
       },
       appearance = {
         use_nvim_cmp_as_default = false,
