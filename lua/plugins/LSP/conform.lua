@@ -34,6 +34,7 @@ return {
         html = { "superhtml" },
         lua = { "stylua" },
         markdown = { "prettierd" },
+        php = { "php_cs_fixer" },
         python = { "ruff_fix", "ruff_organize_imports", "ruff_format" },
         rust = { "rustfmt" },
         swift = { "swiftformat" },

@@ -15,7 +15,7 @@ return {
       -- - sd'   - [S]urround [D]elete [']quotes
       -- - sr)'  - [S]urround [R]eplace [)] [']
       -- require("mini.surround").setup()
-      require("mini.pairs").setup()
+      -- require("mini.pairs").setup()
       require("mini.hipatterns").setup({
         highlighters = {
           -- fixme = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },

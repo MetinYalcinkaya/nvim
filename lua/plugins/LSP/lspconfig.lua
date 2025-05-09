@@ -4,10 +4,10 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     dependencies = {
       {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
         opts = { ui = { border = border("FloatBorder") } },
       },
-      "williamboman/mason-lspconfig.nvim",
+      "mason-org/mason-lspconfig.nvim",
       "WhoIsSethDaniel/mason-tool-installer.nvim",
       "saghen/blink.cmp",
       -- { 'j-hui/fidget.nvim', opts = { notification = { override_vim_notify = true } } },

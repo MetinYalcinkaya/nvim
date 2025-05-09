@@ -51,6 +51,7 @@ return {
             "SnacksIndentScope5",
             "SnacksIndentScope6",
             "SnacksIndentScope7",
+            "SnacksIndentScope8",
           },
         },
       },
