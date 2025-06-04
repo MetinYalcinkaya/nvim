@@ -1,31 +1,35 @@
 return {
-  -- {
-  --   'catppuccin/nvim',
-  --   name = 'catppuccin',
-  --   priority = 1000,
-  --   config = function()
-  --     require('catppuccin').setup {
-  --       flavour = 'mocha',
-  --       transparent_background = true,
-  --       integrations = {
-  --         noice = true,
-  --         notify = true,
-  --         fidget = true,
-  --         diffview = true,
-  --         mason = true,
-  --         indent_blankline = {
-  --           enabled = true,
-  --           scope_color = 'lavender',
-  --           colored_indent_levels = true,
-  --         },
-  --         telescope = {
-  --           enabled = true,
-  --         },
-  --       },
-  --     }
-  --     vim.cmd.colorscheme 'catppuccin'
-  --   end,
-  -- },
+  {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    priority = 1000,
+    config = function()
+      require("catppuccin").setup({
+        flavour = "mocha",
+        integrations = {
+          -- noice = true,
+          -- notify = true,
+          fidget = true,
+          diffview = true,
+          mason = true,
+          snacks = {
+            enabled = true,
+            indent_scope_color = "lavender",
+          },
+          native_lsp = {
+            enabled = true,
+            underlines = {
+              errors = { "undercurl" },
+              hints = { "undercurl" },
+              warnings = { "undercurl" },
+              information = { "undercurl" },
+            },
+          },
+        },
+      })
+      vim.cmd.colorscheme("catppuccin")
+    end,
+  },
   -- {
   --   "folke/tokyonight.nvim",
   --   lazy = false,
@@ -57,31 +61,31 @@ return {
   --     vim.cmd.colorscheme("rose-pine")
   --   end,
   -- },
-  {
-    "olimorris/onedarkpro.nvim",
-    -- dir = "~/Developer/onedarkpro.nvim/",
-    lazy = false,
-    priority = 1000,
-    config = function()
-      require("onedarkpro").setup({
-        highlights = {
-          NormalFloat = { bg = "NONE" },
-          FloatBorder = { fg = "${gray}", bg = "${bg}" },
-        },
-        styles = {
-          comments = "italic",
-          methods = "bold",
-          functions = "bold",
-          keywords = "italic",
-          parameters = "italic",
-          conditionals = "italic",
-          virtual_text = "italic",
-        },
-        options = {
-          cursorline = true,
-        },
-      })
-      vim.cmd.colorscheme("onedark")
-    end,
-  },
+  -- {
+  --   "olimorris/onedarkpro.nvim",
+  --   -- dir = "~/Developer/onedarkpro.nvim/",
+  --   lazy = false,
+  --   priority = 1000,
+  --   config = function()
+  --     require("onedarkpro").setup({
+  --       highlights = {
+  --         NormalFloat = { bg = "NONE" },
+  --         FloatBorder = { fg = "${gray}", bg = "${bg}" },
+  --       },
+  --       styles = {
+  --         comments = "italic",
+  --         methods = "bold",
+  --         functions = "bold",
+  --         keywords = "italic",
+  --         parameters = "italic",
+  --         conditionals = "italic",
+  --         virtual_text = "italic",
+  --       },
+  --       options = {
+  --         cursorline = true,
+  --       },
+  --     })
+  --     vim.cmd.colorscheme("onedark")
+  --   end,
+  -- },
 }

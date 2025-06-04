@@ -39,6 +39,15 @@ return {
         rust = { "rustfmt" },
         swift = { "swiftformat" },
       },
+      formatters = {
+        php_cs_fixer = {
+          args = {
+            "fix",
+            '--rules={"curly_braces_position": {"classes_opening_brace": "same_line", "functions_opening_brace": "same_line"}}',
+            "$FILENAME",
+          },
+        },
+      },
     },
   },
 }
