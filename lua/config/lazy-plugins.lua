@@ -3,6 +3,7 @@ require("lazy").setup({
   { import = "plugins.LSP" },
   { import = "plugins" },
   { import = "plugins.Notes" },
+  { import = "plugins.Java" },
 }, {
   ui = {
     border = border("FloatBorder", "rounded"),
