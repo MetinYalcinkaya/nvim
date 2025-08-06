@@ -1,7 +1,7 @@
 -- Set indentation
-vim.bo.tabstop = 2
-vim.bo.softtabstop = 2
-vim.bo.shiftwidth = 2
+vim.bo.tabstop = 4
+vim.bo.softtabstop = 4
+vim.bo.shiftwidth = 4
 vim.bo.expandtab = true
 vim.bo.autoindent = true
 vim.bo.smartindent = true
@@ -10,4 +10,4 @@ vim.bo.smartindent = true
 vim.bo.textwidth = 120
 
 -- Set comment string
-vim.bo.commentstring = '// %s'
+vim.bo.commentstring = "// %s"

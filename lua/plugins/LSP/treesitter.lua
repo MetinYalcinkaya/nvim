@@ -1,47 +1,47 @@
 return {
-  {
-    "nvim-treesitter/nvim-treesitter",
-    branch = "main",
-    event = "VeryLazy",
-    config = function()
-      vim.api.nvim_create_autocmd("FileType", {
-        callback = function(args)
-          if args.match == "asl" then
-            return
-          end
-          if not pcall(vim.treesitter.start, args.buf) then
-            return
-          end
+    {
+        "nvim-treesitter/nvim-treesitter",
+        branch = "main",
+        event = "VeryLazy",
+        config = function()
+            vim.api.nvim_create_autocmd("FileType", {
+                callback = function(args)
+                    if args.match == "asl" then
+                        return
+                    end
+                    if not pcall(vim.treesitter.start, args.buf) then
+                        return
+                    end
 
-          vim.api.nvim_exec_autocmds("User", { pattern = "ts_attach" })
+                    vim.api.nvim_exec_autocmds("User", { pattern = "ts_attach" })
+                end,
+            })
+            require("nvim-treesitter").setup({
+                highlight = {
+                    enable = true,
+                },
+            })
         end,
-      })
-      require("nvim-treesitter").setup({
-        highlight = {
-          enable = true,
-        },
-      })
-    end,
-  },
-  {
-    "lewis6991/ts-install.nvim",
-    event = "VeryLazy",
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-    run = ":TS update",
-    config = function()
-      require("ts-install").setup({
-        auto_install = true,
-        ensure_install = {
-          "lua",
-          "regex",
-          "vim",
-          "bash",
-          "markdown",
-          "markdown_inline",
-        },
-      })
-    end,
-  },
+    },
+    {
+        "lewis6991/ts-install.nvim",
+        event = "VeryLazy",
+        dependencies = { "nvim-treesitter/nvim-treesitter" },
+        run = ":TS update",
+        config = function()
+            require("ts-install").setup({
+                auto_install = true,
+                ensure_install = {
+                    "lua",
+                    "regex",
+                    "vim",
+                    "bash",
+                    "markdown",
+                    "markdown_inline",
+                },
+            })
+        end,
+    },
 }
 -- Old treesitter setup:
 -- return {

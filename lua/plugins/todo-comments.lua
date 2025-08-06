@@ -1,19 +1,19 @@
 return {
-  {
-    "folke/todo-comments.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
+    {
+        "folke/todo-comments.nvim",
+        event = "VeryLazy",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+        },
+        opts = { signs = false },
+        keys = {
+            {
+                "<Leader>st",
+                function()
+                    Snacks.picker.todo_comments()
+                end,
+                desc = "Todo",
+            },
+        },
     },
-    opts = { signs = false },
-    keys = {
-      {
-        "<Leader>st",
-        function()
-          Snacks.picker.todo_comments()
-        end,
-        desc = "Todo",
-      },
-    },
-  },
 }

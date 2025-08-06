@@ -17,7 +17,7 @@ vim.o.showmode = false
 
 -- Sync clipboard between OS and Neovim.
 vim.schedule(function()
-  vim.o.clipboard = "unnamedplus"
+    vim.o.clipboard = "unnamedplus"
 end)
 
 -- Save undo history
@@ -74,9 +74,9 @@ vim.o.confirm = true
 -- vim.o.colorcolumn = "80"
 
 -- Change tab sizing
-vim.o.tabstop = 2
-vim.o.softtabstop = 2
-vim.o.shiftwidth = 2
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.autoindent = true
 vim.o.smartindent = true
@@ -102,71 +102,71 @@ vim.o.conceallevel = 2
 vim.o.winborder = "none"
 
 local border_styles = {
-  undefined = nil,
-  none = { "", "", "", "", "", "", "", "" },
-  double = { "╔", "═", "╗", "║", "╝", "═", "╚", "║" },
-  single = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
-  shadow = {
-    "",
-    "",
-    { " ", "FloatShadowThrough" },
-    { " ", "FloatShadow" },
-    { " ", "FloatShadow" },
-    { " ", "FloatShadow" },
-    { " ", "FloatShadowThrough" },
-    "",
-  },
-  rounded = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-  solid = { " ", " ", " ", " ", " ", " ", " ", " " },
-  block = { "▛", "▀", "▜", "▐", "▟", "▄", "▙", "▌" },
-  inner_block = { " ", "▄", " ", "▌", " ", "▀", " ", "▐" },
-  thinblock = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
-  inner_thinblock = { " ", "▁", " ", "▏", " ", "▔", " ", "▕" },
-  bullet = { "•", "•", "•", "•", "•", "•", "•", "•" },
-  star = { "*", "*", "*", "*", "*", "*", "*", "*" },
-  simple = { "+", "-", "+", "|", "+", "-", "+", "|" },
-  heavy_single = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
-  light_shade = { "░", "░", "░", "░", "░", "░", "░", "░" },
-  medium_shade = { "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒" },
-  dark_shade = { "▓", "▓", "▓", "▓", "▓", "▓", "▓", "▓" },
-  arrow = { "↗", "→", "↘", "↓", "↙", "←", "↖", "↑" },
-  full_block = { "█", "█", "█", "█", "█", "█", "█", "█" },
-  diff = {
-    { "┌", "DiffText" },
-    { "─", "DiffText" },
-    { "┐", "DiffText" },
-    { "│", "DiffText" },
-    { "┘", "DiffText" },
-    { "─", "DiffText" },
-    { "└", "DiffText" },
-    { "│", "DiffText" },
-  },
+    undefined = nil,
+    none = { "", "", "", "", "", "", "", "" },
+    double = { "╔", "═", "╗", "║", "╝", "═", "╚", "║" },
+    single = { "┌", "─", "┐", "│", "┘", "─", "└", "│" },
+    shadow = {
+        "",
+        "",
+        { " ", "FloatShadowThrough" },
+        { " ", "FloatShadow" },
+        { " ", "FloatShadow" },
+        { " ", "FloatShadow" },
+        { " ", "FloatShadowThrough" },
+        "",
+    },
+    rounded = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    solid = { " ", " ", " ", " ", " ", " ", " ", " " },
+    block = { "▛", "▀", "▜", "▐", "▟", "▄", "▙", "▌" },
+    inner_block = { " ", "▄", " ", "▌", " ", "▀", " ", "▐" },
+    thinblock = { "🭽", "▔", "🭾", "▕", "🭿", "▁", "🭼", "▏" },
+    inner_thinblock = { " ", "▁", " ", "▏", " ", "▔", " ", "▕" },
+    bullet = { "•", "•", "•", "•", "•", "•", "•", "•" },
+    star = { "*", "*", "*", "*", "*", "*", "*", "*" },
+    simple = { "+", "-", "+", "|", "+", "-", "+", "|" },
+    heavy_single = { "┏", "━", "┓", "┃", "┛", "━", "┗", "┃" },
+    light_shade = { "░", "░", "░", "░", "░", "░", "░", "░" },
+    medium_shade = { "▒", "▒", "▒", "▒", "▒", "▒", "▒", "▒" },
+    dark_shade = { "▓", "▓", "▓", "▓", "▓", "▓", "▓", "▓" },
+    arrow = { "↗", "→", "↘", "↓", "↙", "←", "↖", "↑" },
+    full_block = { "█", "█", "█", "█", "█", "█", "█", "█" },
+    diff = {
+        { "┌", "DiffText" },
+        { "─", "DiffText" },
+        { "┐", "DiffText" },
+        { "│", "DiffText" },
+        { "┘", "DiffText" },
+        { "─", "DiffText" },
+        { "└", "DiffText" },
+        { "│", "DiffText" },
+    },
 }
 
 _G.border = function(hl_name, style)
-  style = style or "rounded"
-  local border_def = border_styles[style]
+    style = style or "rounded"
+    local border_def = border_styles[style]
 
-  if not border_def then
-    error("Invalid border style: " .. tostring(style))
-  end
-  local new_border = {}
-  for i, element in ipairs(border_def) do
-    if type(element) == "table" then
-      new_border[i] = { element[1], hl_name or element[2] }
-    else
-      new_border[i] = { element, hl_name }
+    if not border_def then
+        error("Invalid border style: " .. tostring(style))
     end
-  end
-  return new_border
-  -- return {
-  --   { "╭", hl_name },
-  --   { "─", hl_name },
-  --   { "╮", hl_name },
-  --   { "│", hl_name },
-  --   { "╯", hl_name },
-  --   { "─", hl_name },
-  --   { "╰", hl_name },
-  --   { "│", hl_name },
-  -- }
+    local new_border = {}
+    for i, element in ipairs(border_def) do
+        if type(element) == "table" then
+            new_border[i] = { element[1], hl_name or element[2] }
+        else
+            new_border[i] = { element, hl_name }
+        end
+    end
+    return new_border
+    -- return {
+    --   { "╭", hl_name },
+    --   { "─", hl_name },
+    --   { "╮", hl_name },
+    --   { "│", hl_name },
+    --   { "╯", hl_name },
+    --   { "─", hl_name },
+    --   { "╰", hl_name },
+    --   { "│", hl_name },
+    -- }
 end
