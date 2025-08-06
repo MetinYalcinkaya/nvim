@@ -1,6 +1,5 @@
 return {
   {
-    -- TODO: sus out a way to use blink as cmp for functioning links etc
     "obsidian-nvim/obsidian.nvim",
     -- dir = "~/Developer/obsidian.nvim",
     version = "*",
@@ -10,11 +9,8 @@ return {
       local cwd = vim.fn.getcwd()
       local home = vim.fn.expand("~")
       local vault_path = home .. "/Documents/Obsidian/Main"
-      return string.find(cwd, vault_path) -- cwd == vault_path
+      return string.find(cwd, vault_path)
     end,
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
     opts = {
       workspaces = {
         {
@@ -24,38 +20,32 @@ return {
       },
       notes_subdir = "inbox",
       new_notes_location = "notes_subdir",
-
+      legacy_commands = false,
       completion = {
         blink = true,
-        min_chars = 0,
+        min_chars = 2,
       },
-      mappings = {
-        ["gf"] = {
-          action = function()
-            return require("obsidian").util.gf_passthrough()
-          end,
-          opts = { noremap = false, expr = true, buffer = true },
-        },
-        ["<cr>"] = {
-          action = function()
-            return require("obsidian").util.smart_action()
-          end,
-          opts = { buffer = true, expr = true },
-        },
-      },
-      disable_frontmatter = false,
+      disable_frontmatter = true,
       templates = {
         subdir = "templates",
         date_format = "%Y-%m-%d",
         time_format = "%H:%M",
       },
+      checkbox = {
+        order = {
+          " ",
+          "x",
+        },
+      },
       ui = {
         enable = true,
-        checkboxes = {},
         bullets = {},
       },
       attachments = {
         img_folder = "images",
+      },
+      footer = {
+        enabled = false,
       },
     },
     config = function(_, opts)
@@ -63,14 +53,20 @@ return {
 
       obsidian.setup(opts)
 
-      vim.keymap.set("n", "<leader>oc", obsidian.util.toggle_checkbox, { desc = "Obsidian Toggle Checkbox" })
-      vim.keymap.set("n", "<leader>oo", "<cmd>ObsidianOpen<CR>", { desc = "Open in Obsidian App" })
-      vim.keymap.set("n", "<leader>ob", "<cmd>ObsidianBacklinks<CR>", { desc = "Show Obsidian Backlinks" })
-      vim.keymap.set("n", "<leader>ol", "<cmd>ObsidianLinks<CR>", { desc = "Show Obsidian Links" })
-      vim.keymap.set("n", "<leader>on", "<cmd>ObsidianNew<CR>", { desc = "Create New Note" })
-      vim.keymap.set("n", "<leader>os", "<cmd>ObsidianSearch<CR>", { desc = "Search Obsidian" })
-      vim.keymap.set("n", "<leader>oq", "<cmd>ObsidianQuickSwitch<CR>", { desc = "Quick Switch" })
-      vim.keymap.set("n", "<leader>op", "<cmd>ObsidianPasteImg<CR>", { desc = "Paste Image" })
+      -- vim.keymap.set("n", "<leader>oc", obsidian.util.toggle_checkbox, { desc = "Obsidian Toggle Checkbox" })
+      vim.keymap.set(
+        "n",
+        "<CR>",
+        obsidian.api.smart_action,
+        { expr = true, buffer = true, desc = "Obsidian Smart Action" }
+      )
+      vim.keymap.set("n", "<leader>oo", "<cmd>Obsidian open<CR>", { desc = "Open in Obsidian App" })
+      vim.keymap.set("n", "<leader>ob", "<cmd>Obsidian backlinks<CR>", { desc = "Show Obsidian Backlinks" })
+      vim.keymap.set("n", "<leader>ol", "<cmd>Obsidian links<CR>", { desc = "Show Obsidian Links" })
+      vim.keymap.set("n", "<leader>on", "<cmd>Obsidian new<CR>", { desc = "Create New Note" })
+      vim.keymap.set("n", "<leader>os", "<cmd>Obsidian search<CR>", { desc = "Search Obsidian" })
+      vim.keymap.set("n", "<leader>oq", "<cmd>Obsidian quick_switch<CR>", { desc = "Quick Switch" })
+      vim.keymap.set("n", "<leader>op", "<cmd>Obsidian paste_img<CR>", { desc = "Paste Image" })
       vim.keymap.set(
         "n",
         "<leader>ok",
@@ -78,24 +74,6 @@ return {
         { desc = "Move File To Uncategorized", silent = true }
       )
       vim.keymap.set("n", "<leader>odd", ":!rm '%:p'<CR>:bd<CR>", { desc = "Delete File", silent = true })
-
-      -- Inserts template and formats first title by removing date and file name chars
-      -- Now done via zsh script on
-      -- vim.keymap.set("n", "<leader>ot", function()
-      --   vim.cmd("ObsidianTemplate note")
-      --   local LINE_NUM = 13
-      --   local line = vim.fn.getline(LINE_NUM)
-      --   local title = line:match("# (.*)")
-      --
-      --   if title then
-      --     title = title:gsub("_%d%d%d%d%-%d%d%-%d%d$", "")
-      --     title = title:gsub("[_%-]", " ")
-      --     title = title:gsub("%s+$", "")
-      --     vim.fn.setline(LINE_NUM, "# " .. title)
-      --   end
-      --
-      --   vim.cmd("noh")
-      -- end, { desc = "Insert Template" })
 
       -- Obsidian specific live grep folders
       local inbox_dir = "~/Documents/Obsidian/Main/inbox"

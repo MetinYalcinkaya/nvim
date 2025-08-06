@@ -6,6 +6,7 @@ return {
     opts = {
       bigfile = { enabled = true },
       dashboard = {
+        enabled = false,
         width = 80,
         preset = {
           keys = {
