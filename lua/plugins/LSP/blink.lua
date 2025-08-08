@@ -100,7 +100,7 @@ return {
                 },
                 providers = {
                     lsp = {
-                        fallbacks = { "ripgrep" },
+                        -- fallbacks = { "ripgrep" },
                         score_offset = 10,
                     },
                     path = {
