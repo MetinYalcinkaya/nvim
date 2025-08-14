@@ -6,7 +6,7 @@ return {
         opts = {
             bigfile = { enabled = true },
             dashboard = {
-                enabled = true,
+                enabled = false,
                 width = 80,
                 preset = {
                     keys = {
@@ -47,7 +47,7 @@ return {
             notifier = {
                 style = "compact",
             },
-            statuscolumn = {},
+            -- statuscolumn = {},
             -- indent = {},
             image = {
                 markdown = {

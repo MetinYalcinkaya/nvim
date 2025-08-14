@@ -6,6 +6,10 @@ return {
         config = function()
             require("catppuccin").setup({
                 flavour = "mocha",
+                float = {
+                    transparent = false,
+                    solid = true,
+                },
                 integrations = {
                     -- noice = true,
                     -- notify = true,

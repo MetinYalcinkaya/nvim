@@ -4,18 +4,18 @@ return {
         branch = "main",
         event = "VeryLazy",
         config = function()
-            vim.api.nvim_create_autocmd("FileType", {
-                callback = function(args)
-                    if args.match == "asl" then
-                        return
-                    end
-                    if not pcall(vim.treesitter.start, args.buf) then
-                        return
-                    end
-
-                    vim.api.nvim_exec_autocmds("User", { pattern = "ts_attach" })
-                end,
-            })
+            -- vim.api.nvim_create_autocmd("FileType", {
+            --     callback = function(args)
+            --         if args.match == "asl" then
+            --             return
+            --         end
+            --         if not pcall(vim.treesitter.start, args.buf) then
+            --             return
+            --         end
+            --
+            --         vim.api.nvim_exec_autocmds("User", { pattern = "ts_attach" })
+            --     end,
+            -- })
             require("nvim-treesitter").setup({
                 highlight = {
                     enable = true,

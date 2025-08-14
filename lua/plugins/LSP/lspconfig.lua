@@ -5,7 +5,7 @@ return {
         dependencies = {
             {
                 "mason-org/mason.nvim",
-                opts = { ui = { border = border("FloatBorder") } },
+                opts = {},
             },
             "mason-org/mason-lspconfig.nvim",
             "WhoIsSethDaniel/mason-tool-installer.nvim",
