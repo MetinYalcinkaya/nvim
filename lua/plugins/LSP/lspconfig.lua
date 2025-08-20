@@ -10,8 +10,6 @@ return {
             "mason-org/mason-lspconfig.nvim",
             "WhoIsSethDaniel/mason-tool-installer.nvim",
             "saghen/blink.cmp",
-            -- { 'j-hui/fidget.nvim', opts = { notification = { override_vim_notify = true } } },
-            -- { "j-hui/fidget.nvim" },
         },
         config = function()
             vim.api.nvim_create_autocmd("LspAttach", {
@@ -66,22 +64,6 @@ return {
             local capabilities = require("blink.cmp").get_lsp_capabilities()
 
             local servers = {
-                -- pylsp = {
-                --   settings = {
-                --     pylsp = {
-                --       plugins = {
-                --         pyflakes = { enabled = false },
-                --         pycodestyle = { enabled = false },
-                --         autopep8 = { enabled = false },
-                --         yapf = { enabled = false },
-                --         mccabe = { enabled = false },
-                --         pylsp_mypy = { enabled = false },
-                --         pylsp_black = { enabled = false },
-                --         pylsp_isort = { enabled = false },
-                --       },
-                --     },
-                --   },
-                -- },
                 basedpyright = {
                     settings = {
                         basedpyright = {
@@ -157,18 +139,10 @@ return {
             local ensure_installed = vim.tbl_keys(servers or {})
             vim.list_extend(ensure_installed, {
                 "stylua", -- Used to format Lua code
-                -- "black", -- Python formatter
-                -- "lua-language-server", -- Lua LSP
-                -- "basedpyright", -- Static type checker for Python
-                -- "isort", -- Import sorter for Python
-                -- "marksman", -- Markdown LSP server (Completion, goto def, references, rename, diag)
                 "prettierd", -- Using for markdown formatting specifically
                 "clangd", -- C LSP
-                -- "clang-format", -- C formatter
                 "swiftlint", -- Swift linter
-                -- "zls", -- Zig language server
                 "ruff", -- Python linter
-                -- "pylsp", -- python lsp
             })
 
             require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

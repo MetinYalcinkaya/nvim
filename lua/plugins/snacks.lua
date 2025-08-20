@@ -5,56 +5,15 @@ return {
         lazy = false,
         opts = {
             bigfile = { enabled = true },
-            dashboard = {
-                enabled = false,
-                width = 80,
-                preset = {
-                    keys = {
-                        { icon = " ", key = "n", desc = "New File", action = ":ene | startinsert" },
-                        {
-                            icon = "󰒲 ",
-                            key = "L",
-                            desc = "Lazy",
-                            action = ":Lazy",
-                            enabled = package.loaded.lazy ~= nil,
-                        },
-                        { icon = " ", key = "q", desc = "Quit", action = ":qa" },
-                    },
-                    header = [[
-███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
-████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
-██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
-██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
-██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
-                                                btw]],
-                },
-                sections = {
-                    { section = "header" },
-                    {
-                        icon = " ",
-                        title = "Recent Files",
-                        section = "recent_files",
-                        cwd = true,
-                        limit = 8,
-                        indent = 2,
-                        padding = 1,
-                    },
-                    { icon = " ", title = "Keymaps", section = "keys", indent = 2, padding = 1 },
-                    { section = "startup" },
-                },
-            },
             notifier = {
-                style = "compact",
+                style = "minimal",
             },
-            -- statuscolumn = {},
-            -- indent = {},
             image = {
-                markdown = {
-                    enabled = true,
+                doc = {
+                    enabled = false,
+                    inline = false,
                 },
             },
-            input = {},
             picker = {
                 matcher = {
                     frecency = true,
@@ -347,6 +306,13 @@ return {
                     Snacks.picker.colorschemes()
                 end,
                 desc = "Colorschemes",
+            },
+            {
+                "<leader>k",
+                function()
+                    Snacks.image.hover()
+                end,
+                desc = "Image Hover",
             },
         },
     },

@@ -20,27 +20,6 @@ return {
         opts = {
             snippets = {
                 preset = "luasnip",
-                -- expand = function(snippet)
-                --   vim.snippet.expand(snippet)
-                -- end,
-                -- active = function(filter)
-                --   return vim.snippet.active(filter)
-                -- end,
-                -- jump = function(direction)
-                --   vim.snippet.jump(direction)
-                -- end,
-                -- expand = function(snippet)
-                --   require("luasnip").lsp_expand(snippet)
-                -- end,
-                -- active = function(filter)
-                --   if filter and filter.direction then
-                --     return require("luasnip").jumpable(filter.direction)
-                --   end
-                --   return require("luasnip").in_snippet()
-                -- end,
-                -- jump = function(direction)
-                --   require("luasnip").jump(direction)
-                -- end,
             },
             cmdline = {
                 completion = {
@@ -111,12 +90,12 @@ return {
                     snippets = {
                         -- FIX: docstrings ain't workin'
                         min_keyword_length = 1,
-                        score_offset = 8,
+                        score_offset = 6,
                     },
                     buffer = {
                         max_items = 3,
                         min_keyword_length = 4,
-                        score_offset = 5,
+                        score_offset = 3,
                     },
                     lazydev = {
                         name = "LazyDev",
@@ -127,8 +106,10 @@ return {
                     ripgrep = {
                         module = "blink-ripgrep",
                         name = "Ripgrep",
-                        min_keyword_length = 1,
-                        score_offset = 5,
+                        opts = {
+                            prefix_min_len = 4,
+                        },
+                        score_offset = 3,
                     },
                 },
             },

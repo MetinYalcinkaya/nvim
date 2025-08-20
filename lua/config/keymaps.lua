@@ -1,10 +1,6 @@
 -- Set highlight on search, but clear on pressing <Esc> in normal mode
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- Move visual code up/down
-vim.keymap.set("x", "J", ":m '>+1<CR>gv=gv", { desc = "Move code down", silent = true })
-vim.keymap.set("x", "K", ":m '<-2<CR>gv=gv", { desc = "Move code up", silent = true })
-
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", function()
     vim.diagnostic.jump({ count = -1, float = true })
@@ -14,9 +10,6 @@ vim.keymap.set("n", "]d", function()
 end, { desc = "Go to next [D]iagnostic message" })
 vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float, { desc = "Show diagnostic [E]rror messages" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
-
--- NOTE: This doesn't seem to work in tmux, maybe find alternative
-vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>", { desc = "Exit terminal mode" })
 
 -- Rebinds arrowkeys to use hjkl while using Glove80
 vim.keymap.set("n", "<Left>", "h", { noremap = true, silent = true })

@@ -27,8 +27,8 @@ return {
                 end
             end,
             formatters_by_ft = {
-                c = { "clang-format" },
-                cpp = { "clangd" },
+                c = { "clang_format" },
+                cpp = { "clang_format" },
                 css = { "prettierd" },
                 go = { "gofmt" },
                 html = { "superhtml" },
@@ -45,6 +45,11 @@ return {
                         "fix",
                         '--rules={"curly_braces_position": {"classes_opening_brace": "same_line", "functions_opening_brace": "same_line"}}',
                         "$FILENAME",
+                    },
+                },
+                clang_format = {
+                    args = {
+                        "--style={BasedOnStyle: LLVM, IndentWidth: 4, TabWidth: 4, UseTab: Never}",
                     },
                 },
             },
