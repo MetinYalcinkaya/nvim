@@ -1,16 +1,14 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
--- Highlight when yanking (copying) text
 autocmd("TextYankPost", {
     callback = function()
         vim.hl.on_yank({ timeout = 200 })
     end,
     group = augroup("highlight-on-yank", { clear = true }),
-    desc = "Highlight when yanking (copying) text",
+    desc = "Highlight when yanking text",
 })
 
--- Disables the automatic commenting over the next line when inserting new line (o)
 autocmd("BufEnter", {
     callback = function()
         vim.opt.formatoptions:remove({ "c", "r", "o" })
@@ -19,7 +17,6 @@ autocmd("BufEnter", {
     desc = "Disable new line comment",
 })
 
--- Spellcheck, wrap, and text width for text filetypes
 autocmd("FileType", {
     pattern = { "markdown", "gitcommit", "text" },
     callback = function()
@@ -31,7 +28,6 @@ autocmd("FileType", {
     desc = "Spellcheck for Markdown files",
 })
 
--- Reload on file change
 autocmd("FocusGained", {
     callback = function()
         if vim.o.buftype ~= "nofile" then

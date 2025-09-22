@@ -10,8 +10,8 @@ return {
             },
             image = {
                 doc = {
-                    enabled = false,
-                    inline = false,
+                    enabled = true,
+                    inline = true,
                 },
             },
             picker = {
