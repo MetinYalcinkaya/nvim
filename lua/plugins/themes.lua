@@ -20,14 +20,14 @@ return {
                         enabled = true,
                         indent_scope_color = "lavender",
                     },
-                    native_lsp = {
-                        enabled = true,
-                        underlines = {
-                            errors = { "undercurl" },
-                            hints = { "undercurl" },
-                            warnings = { "undercurl" },
-                            information = { "undercurl" },
-                        },
+                },
+                lsp_styles = {
+                    enabled = true,
+                    underlines = {
+                        errors = { "undercurl" },
+                        hints = { "undercurl" },
+                        warnings = { "undercurl" },
+                        information = { "undercurl" },
                     },
                 },
             })
