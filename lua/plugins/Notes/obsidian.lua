@@ -25,7 +25,9 @@ return {
                 blink = true,
                 min_chars = 2,
             },
-            disable_frontmatter = true,
+            frontmatter = {
+                enabled = false,
+            },
             templates = {
                 subdir = "templates",
                 date_format = "%Y-%m-%d",
