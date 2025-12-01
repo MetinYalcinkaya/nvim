@@ -1,17 +1,28 @@
 return {
     {
         "rachartier/tiny-inline-diagnostic.nvim",
-        event = { "BufReadPre", "BufNewFile", "VeryLazy" },
-        priority = 1001,
+        event = "VeryLazy",
+        priority = 1000,
         opts = {
-            preset = "classic",
             options = {
-                show_source = true,
+                show_source = {
+                    if_many = true,
+                },
                 throttle = 0,
                 multilines = {
                     enabled = true,
                     always_show = true,
                 },
+            },
+            signs = {
+                diag = "",
+                vertical = " │",
+                vertical_end = " └",
+                left = "",
+                right = "",
+            },
+            blend = {
+                factor = 0.00,
             },
         },
     },

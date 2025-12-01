@@ -1,7 +1,8 @@
 return {
     {
         "folke/todo-comments.nvim",
-        event = "VeryLazy",
+        -- event = "VeryLazy",
+        lazy = true,
         dependencies = {
             "nvim-lua/plenary.nvim",
         },

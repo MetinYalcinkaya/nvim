@@ -4,4 +4,21 @@ require("lazy").setup({
     { import = "plugins" },
     { import = "plugins.Notes" },
     { import = "plugins.Java" },
+}, {
+    performance = {
+        rtp = {
+            disabled_plugins = {
+                "gzip",
+                "netrwPlugin",
+                "rplugin",
+                "tarPlugin",
+                "tohtml",
+                "tutor",
+                "zipPlugin",
+            },
+        },
+    },
+    rocks = {
+        enabled = false,
+    },
 })
