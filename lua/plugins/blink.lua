@@ -34,8 +34,11 @@ return {
                 },
             },
             completion = {
+                -- HACK: fix completion menu drawn getting stuck?
+                list = { selection = { preselect = true } },
                 menu = {
                     border = border("FloatBorder"),
+                    auto_show_delay_ms = 100,
                     min_width = 15,
                     max_height = 10,
                     draw = {
@@ -44,7 +47,7 @@ return {
                     },
                 },
                 documentation = {
-                    auto_show = true,
+                    auto_show = false,
                     auto_show_delay_ms = 50,
                     update_delay_ms = 50,
                     window = {
