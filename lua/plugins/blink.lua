@@ -38,7 +38,7 @@ return {
                 list = { selection = { preselect = true } },
                 menu = {
                     border = border("FloatBorder"),
-                    auto_show_delay_ms = 100,
+                    auto_show_delay_ms = 1,
                     min_width = 15,
                     max_height = 10,
                     draw = {
