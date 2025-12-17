@@ -23,7 +23,7 @@ return {
                 { "<Leader>o", group = "[O]bsidian", icon = { icon = "", color = "purple" } },
                 { "<Leader>m", group = "[M]arkdown", icon = { icon = "", color = "purple" } },
                 -- Oil.nvim icon
-                { "_", group = "Oil Overlay", icon = { icon = "󰏇", color = "red" } },
+                { "<Leader>e", group = "Oil Overlay", icon = { icon = "󰏇", color = "red" } },
                 -- Trouble
                 { "<Leader>x", group = "Diagnostics", icon = { icon = "󰔫", color = "cyan" } },
                 -- Git

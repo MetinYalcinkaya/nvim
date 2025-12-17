@@ -10,7 +10,7 @@ return {
                 view_options = {
                     show_hidden = true,
                 },
-                delete_to_trash = true, -- Deletes to trash
+                delete_to_trash = true,
                 skip_confirm_for_simple_edits = true,
                 use_default_keymaps = false,
                 keymaps = {
@@ -18,7 +18,7 @@ return {
                     ["-"] = "actions.parent",
                 },
             })
-            vim.keymap.set("n", "_", require("oil").toggle_float)
+            vim.keymap.set("n", "<Leader>e", require("oil").toggle_float)
         end,
     },
 }
