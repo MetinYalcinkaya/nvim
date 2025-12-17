@@ -21,7 +21,7 @@ return {
                     lint.try_lint()
                 end,
             })
-            vim.keymap.set("n", "<leader>l", function()
+            vim.keymap.set("n", "<Leader>l", function()
                 lint.try_lint()
             end, { desc = "Lint buffer" })
         end,
