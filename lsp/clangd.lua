@@ -1,0 +1,25 @@
+---@type vim.lsp.Config
+return {
+    cmd = {
+        "clangd",
+        "--background-index",
+        "--clang-tidy",
+        "--header-insertion=iwyu",
+        "--completion-style=detailed",
+        "--function-arg-placeholders=false",
+        "--fallback-style={BasedOnStyle: LLVM, AllowShortFunctionsOnASingleLine: None}",
+    },
+    filetypes = {
+        "c",
+        "cpp",
+    },
+    on_attach = function()
+        local clangd_extensions_source_header = require("clangd_extensions.switch_source_header")
+        vim.keymap.set(
+            "n",
+            "<Leader>ch",
+            clangd_extensions_source_header.switch_source_header,
+            { desc = "Switch Source/Header (C/C++)", silent = true }
+        )
+    end,
+}
