@@ -1,12 +1,37 @@
 return {
     {
         "nvim-treesitter/nvim-treesitter",
-        lazy = false,
+        event = "VeryLazy",
+        dependencies = {
+            {
+                "nvim-treesitter/nvim-treesitter-context",
+                opts = {
+                    max_lines = 4,
+                    multiline_threshold = 2,
+                },
+                keys = {
+                    {
+                        "[c",
+                        function()
+                            if vim.wo.diff then
+                                return "[c"
+                            else
+                                vim.schedule(function()
+                                    require("treesitter-context").go_to_context()
+                                end)
+                                return "<Ignore>"
+                            end
+                        end,
+                        desc = "Jump to upper context",
+                        expr = true,
+                    },
+                },
+            },
+        },
         build = ":TSUpdate",
-        opts = {},
         config = function()
-            local treesitter = require("nvim-treesitter")
-            local ensure_installed = {
+            local ts = require("nvim-treesitter")
+            ts.install({
                 "bash",
                 "c",
                 "comment",
@@ -41,18 +66,29 @@ return {
                 "vimdoc",
                 "vua",
                 "xml",
+            }, { max_jobs = 8 })
+
+            local ts_group = vim.api.nvim_create_augroup("treesitter-setup", { clear = true })
+            local ignore_ft = {
+                "checkhealth",
+                "lazy",
             }
-            local already_installed = treesitter.get_installed()
 
-            local to_install = vim.iter(ensure_installed)
-                :filter(function(parser)
-                    return not vim.tbl_contains(already_installed, parser)
-                end)
-                :totable()
+            vim.api.nvim_create_autocmd("FileType", {
+                group = ts_group,
+                desc = "Enable treesitter highlighting",
+                callback = function(event)
+                    if vim.tbl_contains(ignore_ft, event.match) then
+                        return
+                    end
 
-            if #to_install > 0 then
-                treesitter.install(to_install)
-            end
+                    local lang = vim.treesitter.language.get_lang(event.match) or event.match
+                    local buf = event.buf
+                    pcall(vim.treesitter.start, buf, lang)
+                    vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+                    ts.install({ lang })
+                end,
+            })
         end,
     },
 }

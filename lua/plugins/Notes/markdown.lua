@@ -2,7 +2,7 @@ return {
     {
         "MeanderingProgrammer/render-markdown.nvim",
         ft = { "markdown", "gitcommit" },
-        dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" },
+        dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-mini/mini.icons" },
         config = function()
             require("render-markdown").setup({
                 debounce = 5,

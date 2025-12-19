@@ -19,7 +19,7 @@ return {
             "n",
             "<Leader>ch",
             clangd_extensions_source_header.switch_source_header,
-            { desc = "Switch Source/Header (C/C++)", silent = true }
+            { desc = "Switch source/header (C/C++)", silent = true }
         )
     end,
 }

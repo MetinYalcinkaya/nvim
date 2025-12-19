@@ -11,9 +11,8 @@ return {
                     solid = true,
                 },
                 integrations = {
-                    -- noice = true,
-                    -- notify = true,
                     fidget = true,
+                    fzf = true,
                     diffview = true,
                     mason = true,
                     snacks = {

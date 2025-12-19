@@ -4,7 +4,7 @@ return {
         event = "VeryLazy",
         opts = {
             preset = "helix",
-            delay = 0,
+            delay = 1,
             icons = {
                 keys = {
                     BS = "󰭜 ", -- Better backspace icon + fix space issue I had
@@ -14,36 +14,23 @@ return {
         config = function(_, opts)
             local wk = require("which-key")
             wk.add({
-                -- { "<Leader>c", group = "[C]ode", icon = { icon = "", color = "orange" }, mode = { "n", "x" } },
-                -- { "<Leader>d", group = "[D]ocument", icon = { icon = "󰈔", color = "cyan" } },
-                -- { "<Leader>r", group = "[R]ename", icon = { icon = "󰘎", color = "cyan" } },
-                { "<Leader>s", group = "[S]earch", icon = { icon = "", color = "green" } },
-                { "<Leader>t", group = "[T]oggle", icon = { icon = "", color = "yellow" } },
                 -- Obsidian/Markdown
-                { "<Leader>o", group = "[O]bsidian", icon = { icon = "", color = "purple" } },
-                { "<Leader>m", group = "[M]arkdown", icon = { icon = "", color = "purple" } },
+                { "<Leader>o", group = "Obsidian", icon = { icon = "", color = "purple" } },
+                { "<Leader>m", group = "Markdown", icon = { icon = "", color = "purple" } },
                 -- Oil.nvim icon
-                { "<Leader>e", group = "Oil Overlay", icon = { icon = "󰏇", color = "red" } },
+                { "<Leader>e", group = "Oil", icon = { icon = "󰏇", color = "red" } },
                 -- Trouble
                 { "<Leader>x", group = "Diagnostics", icon = { icon = "󰔫", color = "cyan" } },
+                { "<Leader>c", group = "Trouble LSP", icon = { icon = "󰔫", color = "cyan" } },
                 -- Git
-                { "<Leader>g", group = "[G]it", icon = { name = "git", cat = "filetype" } },
-                { "<Leader>g", desc = "[G]it", mode = "v" },
-                { "<Leader>gh", desc = "[H]unk", icon = { name = "git", cat = "filetype" } },
-                { "<Leader>gt", desc = "[T]oggle", icon = { name = "git", cat = "filetype" } },
-                { "<Leader>gv", desc = "Diff[v]iew", icon = { name = "git", cat = "filetype" } },
-                -- Harpoon
-                { "<Leader>h", group = "[H]arpoon", icon = { icon = "󰀱", color = "grey" } },
-                { "<Leader>1", group = "Harpoon 1", icon = { icon = "󰀱", color = "grey" } },
-                { "<Leader>2", group = "Harpoon 2", icon = { icon = "󰀱", color = "grey" } },
-                { "<Leader>3", group = "Harpoon 3", icon = { icon = "󰀱", color = "grey" } },
-                { "<Leader>4", group = "Harpoon 4", icon = { icon = "󰀱", color = "grey" } },
-                { "<Leader>5", group = "Harpoon 5", icon = { icon = "󰀱", color = "grey" } },
+                { "<Leader>g", group = "Git", icon = { name = "git", cat = "filetype" } },
+                { "<Leader>g", desc = "Git", mode = "v" },
+                { "<Leader>gh", desc = "Hunk", icon = { name = "git", cat = "filetype" } },
+                { "<Leader>gv", desc = "Diffview", icon = { name = "git", cat = "filetype" } },
                 -- Find Files
-                { "<Leader>f", desc = "[F]ind", icon = { icon = "", color = "cyan" } },
-                -- Snacks
-                { "<Leader>u", desc = "Misc", icon = { icon = "", color = "grey" } },
-                -- Hidden keymaps
+                { "<Leader>f", desc = "Find", icon = { icon = "", color = "cyan" } },
+                -- Misc
+                { "<Leader>t", group = "Toggle", icon = { icon = "", color = "yellow" } },
                 wk.setup(opts),
             })
         end,

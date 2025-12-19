@@ -45,45 +45,44 @@ return {
                 end
 
                 -- Navigation
-                map("n", "]c", function()
-                    if vim.wo.diff then
-                        vim.cmd.normal({ "]c", bang = true })
-                    else
-                        gitsigns.nav_hunk("next")
-                    end
-                end, { desc = "Jump to next git [c]hange" })
-
-                map("n", "[c", function()
-                    if vim.wo.diff then
-                        vim.cmd.normal({ "[c", bang = true })
-                    else
-                        gitsigns.nav_hunk("prev")
-                    end
-                end, { desc = "Jump to previous git [c]hange" })
+                -- map("n", "]c", function()
+                --     if vim.wo.diff then
+                --         vim.cmd.normal({ "]c", bang = true })
+                --     else
+                --         gitsigns.nav_hunk("next")
+                --     end
+                -- end, { desc = "Jump to next git change" })
+                --
+                -- map("n", "[c", function()
+                --     if vim.wo.diff then
+                --         vim.cmd.normal({ "[c", bang = true })
+                --     else
+                --         gitsigns.nav_hunk("prev")
+                --     end
+                -- end, { desc = "Jump to previous git change" })
 
                 -- Actions
                 -- Visual
                 map("v", "<Leader>ghs", function()
                     gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-                end, { desc = "[G]it [S]tage Hunk" })
+                end, { desc = "Git Stage Hunk" })
                 map("v", "<Leader>ghr", function()
                     gitsigns.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-                end, { desc = "[G]it [R]eset Hunk" })
+                end, { desc = "Git Reset Hunk" })
                 -- Normal
-                map("n", "<Leader>ghs", gitsigns.stage_hunk, { desc = "[s]tage hunk" })
-                map("n", "<Leader>ghr", gitsigns.reset_hunk, { desc = "[r]eset hunk" })
-                map("n", "<Leader>ghS", gitsigns.stage_buffer, { desc = "[S]tage buffer" })
-                -- map("n", "<Leader>ghu", gitsigns.undo_stage_hunk, { desc = "Git [u]ndo stage hunk" })
-                map("n", "<Leader>ghR", gitsigns.reset_buffer, { desc = "[R]eset buffer" })
-                map("n", "<Leader>ghp", gitsigns.preview_hunk, { desc = "[p]review hunk" })
-                map("n", "<Leader>ghb", gitsigns.blame_line, { desc = "[b]lame line" })
-                map("n", "<Leader>ghd", gitsigns.diffthis, { desc = "[d]iff against index" })
+                map("n", "<Leader>ghs", gitsigns.stage_hunk, { desc = "Stage hunk" })
+                map("n", "<Leader>ghr", gitsigns.reset_hunk, { desc = "Reset hunk" })
+                map("n", "<Leader>ghS", gitsigns.stage_buffer, { desc = "Stage buffer" })
+                map("n", "<Leader>ghR", gitsigns.reset_buffer, { desc = "Reset buffer" })
+                map("n", "<Leader>ghp", gitsigns.preview_hunk, { desc = "Preview hunk" })
+                map("n", "<Leader>ghb", gitsigns.blame_line, { desc = "Blame line" })
+                map("n", "<Leader>ghd", gitsigns.diffthis, { desc = "Diff against index" })
                 map("n", "<Leader>ghD", function()
                     gitsigns.diffthis("@")
-                end, { desc = "[D]iff against last commit" })
+                end, { desc = "Diff against last commit" })
                 -- Toggles
-                map("n", "<Leader>gtb", gitsigns.toggle_current_line_blame, { desc = "Show [b]lame line" })
-                map("n", "<Leader>gtd", gitsigns.preview_hunk_inline, { desc = "Show [D]eleted" })
+                map("n", "<Leader>gtb", gitsigns.toggle_current_line_blame, { desc = "Show blame line" })
+                map("n", "<Leader>gtd", gitsigns.preview_hunk_inline, { desc = "Show deleted" })
 
                 -- Text object
                 map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>")

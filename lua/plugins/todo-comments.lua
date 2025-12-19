@@ -8,9 +8,9 @@ return {
         opts = { signs = false },
         keys = {
             {
-                "<Leader>st",
+                "<Leader>ft",
                 function()
-                    Snacks.picker.todo_comments()
+                    require("todo-comments.fzf").todo()
                 end,
                 desc = "Todo",
             },
