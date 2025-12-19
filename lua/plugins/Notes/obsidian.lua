@@ -71,19 +71,27 @@ return {
             vim.keymap.set(
                 "n",
                 "<Leader>ok",
-                ":!mv '%:p' ~/Documents/Obsidian/Main/uncategorized<CR>:bd<CR>",
-                { desc = "Move to uncategorized", silent = true }
+                ":!mv '%:p' ~/Documents/Obsidian/Main/uncategorised<CR>:bd<CR>",
+                { desc = "Move to uncategorised", silent = true }
             )
             vim.keymap.set("n", "<Leader>odd", ":!rm '%:p'<CR>:bd<CR>", { desc = "Delete file", silent = true })
 
             -- Obsidian specific live grep folders
-            local inbox_dir = "~/Documents/Obsidian/Main/inbox"
-            local notes_dir = "~/Documents/Obsidian/Main/notes"
-            local uncategorized_dir = "~/Documents/Obsidian/Main/uncategorized"
+            local vault_root = vim.fn.expand("~/Documents/Obsidian/Main")
 
             vim.keymap.set("n", "<Leader>fg", function()
-                Snacks.picker.grep({ dirs = { inbox_dir, notes_dir, uncategorized_dir } })
+                require("fzf-lua").live_grep({
+                    cwd = vault_root,
+                    rg_opts = [[--column --line-number --no-heading --color=always --smart-case --max-columns=4096 --glob "inbox/**" --glob "notes/**" --glob "uncategorised/**" -e]],
+                })
             end, { desc = "Grep (Obsidian)", noremap = true })
+
+            vim.keymap.set("n", "<Leader>ff", function()
+                require("fzf-lua").files({
+                    cwd = vault_root,
+                    cmd = [[fd --color=never --type f --hidden --follow --exclude .git . inbox notes uncategorised ]],
+                })
+            end, { desc = "Find files (Obsidian)", noremap = true })
         end,
     },
 }
