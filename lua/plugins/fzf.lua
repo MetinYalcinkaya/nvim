@@ -78,7 +78,7 @@ return {
                     },
                 },
                 defaults = {
-                    git_icons = true,
+                    git_icons = false,
                 },
                 previewers = {
                     codeaction = {
