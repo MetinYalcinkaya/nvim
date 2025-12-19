@@ -10,7 +10,7 @@ return {
 
             lint.linters_by_ft = {
                 -- python = { "ruff" },
-                cpp = { "clangtidy" },
+                -- cpp = { "clangtidy" },
             }
 
             local lint_augroup = vim.api.nvim_create_augroup("nvim-lint", { clear = true })

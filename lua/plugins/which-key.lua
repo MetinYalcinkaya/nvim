@@ -10,6 +10,11 @@ return {
                     BS = "󰭜 ", -- Better backspace icon + fix space issue I had
                 },
             },
+            plugins = {
+                spelling = {
+                    enabled = false,
+                },
+            },
         },
         config = function(_, opts)
             local wk = require("which-key")
