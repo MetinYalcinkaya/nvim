@@ -16,8 +16,6 @@ return {
             config.defaults.keymap.fzf["ctrl-x"] = "jump"
             config.defaults.keymap.fzf["ctrl-f"] = "preview-page-down"
             config.defaults.keymap.fzf["ctrl-b"] = "preview-page-up"
-            config.defaults.keymap.builtin["ctrl-f"] = "preview-page-down"
-            config.defaults.keymap.builtin["ctrl-b"] = "preview-page-up"
             config.defaults.actions.files["ctrl-t"] = require("trouble.sources.fzf").actions.open
 
             -- toggle root dir/cwd
