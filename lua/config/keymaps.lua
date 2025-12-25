@@ -38,7 +38,13 @@ vim.keymap.set("n", "<Leader>fB", "<CMD>FzfLua buffers<CR>", { desc = "Buffers" 
 vim.keymap.set("n", "<Leader>fc", function()
     require("fzf-lua").files({ cwd = vim.fn.stdpath("config"), winopts = { title = " Config " } })
 end, { desc = "Config" })
-vim.keymap.set("n", "<Leader>ff", "<CMD>FzfLua files<CR>", { desc = "Find files" })
+vim.keymap.set("n", "<Leader>ff", function()
+    require("fzf-lua-frecency").frecency({
+        display_score = false,
+        cwd_only = true,
+        fzf_opts = { ["--no-sort"] = false },
+    })
+end, { desc = "Find files" })
 vim.keymap.set("n", "<Leader>fd", "<CMD>FzfLua lsp_document_diagnostics<CR>", { desc = "Document diagnostics" })
 vim.keymap.set("n", "<Leader>fg", "<CMD>FzfLua live_grep<CR>", { desc = "Grep" })
 vim.keymap.set("x", "<Leader>fg", "<CMD>FzfLua grep_visual<CR>", { desc = "Grep" })
