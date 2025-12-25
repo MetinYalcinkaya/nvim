@@ -13,6 +13,12 @@ return {
         "c",
         "cpp",
     },
+    init_options = {
+        fallbackFlags = {
+            "--std=c++23",
+            "-Wall",
+        },
+    },
     on_attach = function()
         local clangd_extensions_source_header = require("clangd_extensions.switch_source_header")
         vim.keymap.set(
