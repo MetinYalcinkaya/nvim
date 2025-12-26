@@ -3,9 +3,6 @@ return {
         "ibhagwan/fzf-lua",
         dependencies = {
             "nvim-mini/mini.icons",
-            {
-                "elanmed/fzf-lua-frecency.nvim",
-            },
         },
         cmd = { "FzfLua" },
         opts = function()
