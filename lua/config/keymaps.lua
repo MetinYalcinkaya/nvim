@@ -2,13 +2,7 @@
 vim.keymap.set("n", "<Esc>", "<cmd>nohl<CR>")
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "[d", function()
-    vim.diagnostic.jump({ count = -1, float = true })
-end, { desc = "Previous diagnostic message" })
-vim.keymap.set("n", "]d", function()
-    vim.diagnostic.jump({ count = 1, float = true })
-end, { desc = "Next diagnostic message" })
-vim.keymap.set("n", "<Leader>q", vim.diagnostic.setloclist, { desc = "Quickfix list" })
+vim.keymap.set("n", "<Leader>q", vim.diagnostic.setqflist, { desc = "Quickfix list" })
 
 -- Rebinds arrowkeys to use hjkl while using Glove80
 vim.keymap.set("n", "<Left>", "h", { noremap = true, silent = true })
@@ -28,9 +22,7 @@ vim.keymap.set("n", "<C-Up>", "<C-k>", { noremap = false, silent = true })
 vim.keymap.set("n", "<C-Right>", "<C-l>", { noremap = false, silent = true })
 
 -- Remove
-vim.keymap.del("n", "gra")
 vim.keymap.del("n", "gri")
-vim.keymap.del("n", "grn")
 vim.keymap.del("n", "grr")
 
 -- Fzf
@@ -67,6 +59,10 @@ vim.keymap.set({ "n", "x" }, "<Leader>fb", function()
         require("fzf-lua").blines(opts)
     end
 end, { desc = "Search current buffer" })
+
+vim.keymap.set("n", "<Leader>ft", function()
+    require("todo-comments.fzf").todo()
+end, { desc = "Todo" })
 
 -- Conform
 vim.keymap.set("", "<Leader>fm", function()

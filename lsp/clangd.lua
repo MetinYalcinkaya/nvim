@@ -17,6 +17,11 @@ return {
         fallbackFlags = {
             "--std=c++23",
             "-Wall",
+            "-Weffc++",
+            "-Wextra",
+            "-Wconversion",
+            "-Wsign-conversion",
+            "-Werror",
         },
     },
     on_attach = function()

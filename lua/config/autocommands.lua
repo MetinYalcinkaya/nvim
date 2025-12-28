@@ -28,7 +28,7 @@ autocmd("FileType", {
     desc = "Spellcheck for Markdown files",
 })
 
-autocmd("FocusGained", {
+autocmd({ "FocusGained", "TermClose", "TermLeave" }, {
     callback = function()
         if vim.o.buftype ~= "nofile" then
             vim.cmd("checktime")
@@ -36,6 +36,16 @@ autocmd("FocusGained", {
     end,
     group = augroup("reload-on-file-change", { clear = true }),
     desc = "Reload file if changed",
+})
+
+autocmd({ "VimResized" }, {
+    callback = function()
+        local current_tab = vim.fn.tabpagenr()
+        vim.cmd("tabdo wincmd =")
+        vim.cmd("tabnext " .. current_tab)
+    end,
+    group = augroup("resize_splits", { clear = true }),
+    desc = "Resize splits if window is resized",
 })
 
 -- Defer friendly-snippets loading and filetype_extend

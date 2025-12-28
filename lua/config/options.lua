@@ -95,8 +95,42 @@ vim.o.smoothscroll = false
 -- Conceal level
 vim.o.conceallevel = 2
 
--- Diagnostics disable
--- vim.diagnostic.config({ virtual_text = false })
+-- diagnostic setup
+-- vim.diagnostic.config({ signs = false, float = true })
+vim.diagnostic.config({
+    severity_sort = true,
+    float = { border = "rounded", source = "if_many" },
+    signs = {
+        -- gets rid of signs in gutter
+        text = {
+            [vim.diagnostic.severity.ERROR] = "",
+            [vim.diagnostic.severity.WARN] = "",
+            [vim.diagnostic.severity.INFO] = "",
+            [vim.diagnostic.severity.HINT] = "",
+        },
+        -- but can color line num
+        numhl = {
+            [vim.diagnostic.severity.ERROR] = "ErrorMsg",
+            [vim.diagnostic.severity.WARN] = "WarningMsg",
+            [vim.diagnostic.severity.INFO] = "DiagnosticInfo",
+            [vim.diagnostic.severity.HINT] = "DiagnosticHint",
+        },
+    },
+    virtual_text = {
+        current_line = true,
+        source = "if_many",
+        spacing = 2,
+        format = function(diagnostic)
+            local diagnostic_message = {
+                [vim.diagnostic.severity.ERROR] = diagnostic.message,
+                [vim.diagnostic.severity.WARN] = diagnostic.message,
+                [vim.diagnostic.severity.INFO] = diagnostic.message,
+                [vim.diagnostic.severity.HINT] = diagnostic.message,
+            }
+            return diagnostic_message[diagnostic.severity]
+        end,
+    },
+})
 
 -- Borders
 vim.o.winborder = "none"

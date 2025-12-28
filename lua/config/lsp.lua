@@ -3,6 +3,12 @@ local M = {}
 vim.g.inlay_hints = false
 
 local function on_attach(client, bufnr)
+    -- guard
+    if vim.b[bufnr].did_lsp_attach then
+        return
+    end
+    vim.b[bufnr].did_lsp_attach = true
+
     local function map(keys, func, opts, mode)
         mode = mode or "n"
         opts = type(opts) == "string" and { desc = opts } or opts
@@ -10,8 +16,6 @@ local function on_attach(client, bufnr)
         vim.keymap.set(mode, keys, func, opts)
     end
 
-    map("grn", vim.lsp.buf.rename, "Rename")
-    map("gra", vim.lsp.buf.code_action, "Code Action", { "n", "x" })
     map("grr", function()
         require("fzf-lua").lsp_references()
     end, "References")
@@ -35,7 +39,7 @@ local function on_attach(client, bufnr)
     end, "Type Definitions")
 
     if client:supports_method("textDocument/documentHighlight") then
-        local highlight_augroup = vim.api.nvim_create_augroup("lsp-highlight", { clear = false })
+        local highlight_augroup = vim.api.nvim_create_augroup("lsp-highlight-" .. bufnr, { clear = true })
         vim.api.nvim_create_autocmd({ "CursorHold", "InsertLeave" }, {
             buffer = bufnr,
             group = highlight_augroup,
@@ -51,7 +55,7 @@ local function on_attach(client, bufnr)
     end
 
     if client:supports_method("textDocument/inlayHint") then
-        local inlay_hints_group = vim.api.nvim_create_augroup("inlay-hints", { clear = false })
+        local inlay_hints_group = vim.api.nvim_create_augroup("inlay-hints-" .. bufnr, { clear = true })
 
         if vim.g.inlay_hints then
             vim.defer_fn(function()
@@ -68,7 +72,7 @@ local function on_attach(client, bufnr)
                     vim.lsp.inlay_hint.enable(false, { bufnr = bufnr })
                 end
             end,
-            desc = "Enable inlay hints",
+            desc = "Disable inlay hints on InsertEnter",
         })
 
         vim.api.nvim_create_autocmd("InsertLeave", {
@@ -79,13 +83,13 @@ local function on_attach(client, bufnr)
                     vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
                 end
             end,
-            desc = "Disable inlay hints",
+            desc = "Enable inlay hints on InsertLeave",
         })
 
         map("<Leader>th", function()
             local mode = vim.api.nvim_get_mode().mode
             vim.g.inlay_hints = not vim.g.inlay_hints
-            vim.lsp.inlay_hint.enable(vim.g.inlay_hints and (mode == "n" or mode == "v"))
+            vim.lsp.inlay_hint.enable(vim.g.inlay_hints and (mode == "n" or mode == "v"), { bufnr = bufnr })
         end, "Toggle Inlay Hints")
     end
 end

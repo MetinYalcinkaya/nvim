@@ -11,7 +11,6 @@ return {
                 enabled = false,
             },
             completion = {
-                -- HACK: fix completion menu drawn getting stuck?
                 list = { selection = { preselect = false, auto_insert = false } },
                 menu = {
                     auto_show_delay_ms = 1,
@@ -23,6 +22,7 @@ return {
                         columns = {
                             { "label", "label_description", gap = 1 },
                             { "kind", "kind_icon", gap = 1 },
+                            -- { "source_name", gap = 1 },
                         },
                     },
                     scrollbar = false,
@@ -30,6 +30,7 @@ return {
                 documentation = {
                     auto_show = false,
                     auto_show_delay_ms = 50,
+                    treesitter_highlighting = true,
                     update_delay_ms = 50,
                     window = {
                         min_width = 10,
@@ -51,6 +52,12 @@ return {
                         name = "LazyDev",
                         module = "lazydev.integrations.blink",
                         score_offset = 100,
+                    },
+                    snippets = {
+                        min_keyword_length = 2,
+                    },
+                    buffer = {
+                        max_items = 5,
                     },
                     -- path = {
                     --     opts = { get_cwd = vim.uv.cwd, show_hidden_files_by_default = true },
