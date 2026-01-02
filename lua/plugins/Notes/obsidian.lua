@@ -44,7 +44,7 @@ return {
                 bullets = {},
             },
             attachments = {
-                img_folder = "images",
+                folder = "images",
             },
             footer = {
                 enabled = false,

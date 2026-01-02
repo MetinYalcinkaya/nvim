@@ -50,9 +50,7 @@ return {
                 "make",
                 "markdown",
                 "markdown_inline",
-                "norg",
                 "python",
-                "qml",
                 "query",
                 "regex",
                 "rust",
@@ -64,7 +62,6 @@ return {
                 "typst",
                 "vim",
                 "vimdoc",
-                "vua",
                 "xml",
             }, { max_jobs = 8 })
 
@@ -74,21 +71,23 @@ return {
                 "lazy",
             }
 
-            vim.api.nvim_create_autocmd("FileType", {
-                group = ts_group,
-                desc = "Enable treesitter highlighting",
-                callback = function(event)
-                    if vim.tbl_contains(ignore_ft, event.match) then
-                        return
-                    end
-
-                    local lang = vim.treesitter.language.get_lang(event.match) or event.match
-                    local buf = event.buf
-                    pcall(vim.treesitter.start, buf, lang)
-                    vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
-                    ts.install({ lang })
-                end,
-            })
+            -- TODO: spams warning messages, find better way
+            -- https://github.com/nvim-treesitter/nvim-treesitter/commit/1927c76aec829d40dcad24b6469cb639f1334096
+            -- vim.api.nvim_create_autocmd("FileType", {
+            --     group = ts_group,
+            --     desc = "Enable treesitter highlighting",
+            --     callback = function(event)
+            --         if vim.tbl_contains(ignore_ft, event.match) then
+            --             return
+            --         end
+            --
+            --         local lang = vim.treesitter.language.get_lang(event.match) or event.match
+            --         local buf = event.buf
+            --         pcall(vim.treesitter.start, buf, lang)
+            --         vim.bo[buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+            --         ts.install({ lang })
+            --     end,
+            -- })
         end,
     },
 }
